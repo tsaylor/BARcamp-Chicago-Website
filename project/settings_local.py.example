@@ -1,0 +1,5 @@
+DEBUG = True
+TEMPLATE_DEBUG = True
+MEDIA_SERVE = True
+DATABASE_ENGINE = ''           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = ''             # Or path to database file if using sqlite3.
