@@ -24,4 +24,13 @@ body {
 .nav .desc {
     font-size: 16px;
     padding-left: 10px;
+    float:left;
+}
+
+#widgets .widget {
+    background-image:url('widgetbg.png');
+    background-repeat:no-repeat;
+    padding:30px;
+    width:250px;
+    height:250px;
 }
