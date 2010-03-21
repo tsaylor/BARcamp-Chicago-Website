@@ -28,20 +28,37 @@ body {
 }
 
 #widgets .widget {
+    float:left;
     background-image:url('widgetbg.png');
+    background-size: 50%;
     background-repeat:no-repeat;
-    padding-top:55px;
-    width:300px;
+    width:200px;
     height:250px;
     text-align:center;
-    margin:0px;
+    margin:10px;
+    padding-top:10px;
 }
+
+#widgets .widget .title {
+    font-weight:bold;
+    height:15px;
+}
+
+#widgets .widget .content {
+    padding-top:15px;
+}
+
+#widgets .widget img {
+    width:130;
+    height:130;
+}
+
 
 #flickr_badge_source_txt {padding:0; font: 11px Arial, Helvetica, Sans serif; color:#666666;}
 #flickr_badge_icon {display:block !important; margin:0 !important; border: 0px solid rgb(0, 0, 0) !important;}
 #flickr_icon_td {padding:0 5px 0 0 !important;}
 .flickr_badge_image {text-align:center !important;}
-.flickr_badge_image img {border: 0px solid black !important;}
+.flickr_badge_image img {border: 0px solid black !important; }
 #flickr_badge_uber_wrapper {width:150px;}
 #flickr_www {display:block; text-align:center; padding:0 10px 0 10px !important; font: 11px Arial, Helvetica, Sans serif !important; color:#3993ff !important;}
 #flickr_badge_uber_wrapper a:hover,
