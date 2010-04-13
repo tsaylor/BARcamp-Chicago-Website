@@ -21,12 +21,18 @@ body {
     clear: left;
     font-size: 37px;
     float: left;
+    background-color:transparent;
 }
 
 .nav .desc {
     font-size: 16px;
     padding-left: 10px;
     float:left;
+    background-color:transparent;
+}
+
+.nav .desc {
+    background-image:url('rightarrow.png');
 }
 
 #top_bar {
@@ -42,7 +48,6 @@ body {
 #widgets .widget {
     float:left;
     background-image:url('widgetbg.png');
-    background-size: 50%;
     background-repeat:no-repeat;
     width:200px;
     height:250px;
