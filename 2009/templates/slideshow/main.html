@@ -1,0 +1,23 @@
+<html><head><title>BARcamp 2009 Schedule</title>
+<style type='text/css'>
+body {
+    font-family: helvetica, arial, sans-serif;
+}    
+</style>
+<script type="text/javascript">
+setTimeout('Redirect()',5000);
+function Redirect()
+{
+  location.href = '/slides/{{rid}}/{{sid}}';
+}
+</script>
+</head>
+<body>
+{% block content %}
+    {{room.name}}<br>
+    {{talk.0.name}}<br>
+    {{talk.1.name}}<br>
+    {{slide.name}}<br>
+{% endblock content %}
+</body>
+</html>

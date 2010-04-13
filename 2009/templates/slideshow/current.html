@@ -1,0 +1,7 @@
+{% extends 'slideshow/main.html' %}
+{% block content %}
+<h1>Now in {{room.name}}:</h1>
+<p>{{talk.0.name}}</p>
+<h2>Next:</h2>
+<p>{{talk.1.name}}</p>
+{% endblock content %}

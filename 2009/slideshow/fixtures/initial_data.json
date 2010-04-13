@@ -1,0 +1,5 @@
+[{"pk": 1, "model": "slideshow.room", "fields": {"name": "big top"}}, 
+ {"pk": 2, "model": "slideshow.room", "fields": {"name": "something"}},
+ {"pk": 3, "model": "slideshow.room", "fields": {"name": "greenbot"}},
+ {"pk": 4, "model": "slideshow.room", "fields": {"name": "@harper reed"}}
+]

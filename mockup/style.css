@@ -9,6 +9,8 @@ body {
 }
 
 .nav a {
+    background-image: url('/rightarrow.png');
+    background-repeat: no-repeat;
     display: block;
     margin: 5px 0px;
     text-decoration: none;
@@ -25,6 +27,16 @@ body {
     font-size: 16px;
     padding-left: 10px;
     float:left;
+}
+
+#top_bar {
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+
+#search {
+    float: right;
+    margin-top: 100px;
 }
 
 #widgets .widget {
