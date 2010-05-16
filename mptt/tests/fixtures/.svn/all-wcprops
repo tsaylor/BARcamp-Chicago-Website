@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/117/trunk/mptt/tests/fixtures
+END
+genres.json
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/117/trunk/mptt/tests/fixtures/genres.json
+END
+categories.json
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/117/trunk/mptt/tests/fixtures/categories.json
+END

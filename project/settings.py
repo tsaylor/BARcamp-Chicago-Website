@@ -50,7 +50,7 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/admin/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '!qy$v$qpo!dt^3m41g-g8k%-sw@_74s#v0(x^k54p9$^%k=@*8'
+SECRET_KEY = 'l;kjasd on9;fu890 ;2LKSJD;IOU FOP9;U2kl*&(*&*()sjdfliuei jlisja l92u '
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -79,7 +79,23 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'mptt',
+    'tagging',
+    'tinymce',
+    'feincms',
+    'feincms.module.blog',
+    'feincms.module.page',
+    'website',
 )
+
+FEINCMS_ADMIN_MEDIA = '/media/feincms/'
+
+TINYMCE_JS_URL = MEDIA_URL + 'tinymce/jscripts/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = MEDIA_ROOT + 'tinymce/jscripts/tiny_mce'
+TINYMCE_DEFAULT_CONFIG = {'theme': "simple", 'relative_urls': False}
+TINYMCE_SPELLCHECKER = False
+TINYMCE_COMPRESSOR = False  # should probably be true in production
+TINYMCE_FILEBROWSER = False
 
 try:
     from settings_local import *

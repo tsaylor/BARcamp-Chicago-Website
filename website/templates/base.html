@@ -1,0 +1,15 @@
+<div id="content">
+    {% block main_content %}
+    {% for content in feincms_page.content.main %}
+        {{ content.render }}
+    {% endfor %}
+    {% endblock %}
+</div>
+
+<div id="sidebar">
+    {% block sidebar_content %}
+    {% for content in feincms_page.content.sidebar %}
+        {{ content.render }}
+    {% endfor %}
+    {% endblock %}
+</div>
