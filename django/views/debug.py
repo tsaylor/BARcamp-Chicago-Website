@@ -1,14 +1,16 @@
+import datetime
 import os
 import re
 import sys
-import datetime
 
 from django.conf import settings
-from django.template import Template, Context, TemplateDoesNotExist
+from django.http import HttpResponse, HttpResponseServerError, HttpResponseNotFound
+from django.template import (Template, Context, TemplateDoesNotExist,
+    TemplateSyntaxError)
 from django.utils.html import escape
 from django.utils.importlib import import_module
-from django.http import HttpResponse, HttpResponseServerError, HttpResponseNotFound
 from django.utils.encoding import smart_unicode, smart_str
+
 
 HIDDEN_SETTINGS = re.compile('SECRET|PASSWORD|PROFANITIES_LIST')
 
@@ -20,15 +22,31 @@ def linebreak_iter(template_source):
         p = template_source.find('\n', p+1)
     yield len(template_source) + 1
 
+def cleanse_setting(key, value):
+    """Cleanse an individual setting key/value of sensitive content.
+
+    If the value is a dictionary, recursively cleanse the keys in
+    that dictionary.
+    """
+    try:
+        if HIDDEN_SETTINGS.search(key):
+            cleansed = '********************'
+        else:
+            if isinstance(value, dict):
+                cleansed = dict((k, cleanse_setting(k, v)) for k,v in value.items())
+            else:
+                cleansed = value
+    except TypeError:
+        # If the key isn't regex-able, just return as-is.
+        cleansed = value
+    return cleansed
+
 def get_safe_settings():
     "Returns a dictionary of the settings module, with sensitive settings blurred out."
     settings_dict = {}
     for k in dir(settings):
         if k.isupper():
-            if HIDDEN_SETTINGS.search(k):
-                settings_dict[k] = '********************'
-            else:
-                settings_dict[k] = getattr(settings, k)
+            settings_dict[k] = cleanse_setting(k, getattr(settings, k))
     return settings_dict
 
 def technical_500_response(request, exc_type, exc_value, tb):
@@ -76,11 +94,16 @@ class ExceptionReporter:
                         for t in source_list_func(str(self.exc_value))]
                 except (ImportError, AttributeError):
                     template_list = []
+                if hasattr(loader, '__class__'):
+                    loader_name = loader.__module__ + '.' + loader.__class__.__name__
+                else:
+                    loader_name = loader.__module__ + '.' + loader.__name__
                 self.loader_debug_info.append({
-                    'loader': loader.__module__ + '.' + loader.__name__,
+                    'loader': loader_name,
                     'templates': template_list,
                 })
-        if settings.TEMPLATE_DEBUG and hasattr(self.exc_value, 'source'):
+        if (settings.TEMPLATE_DEBUG and hasattr(self.exc_value, 'source') and
+            isinstance(self.exc_value, TemplateSyntaxError)):
             self.get_template_exception_info()
 
         frames = self.get_traceback_frames()
@@ -245,7 +268,7 @@ def technical_404_response(request, exception):
     "Create a technical 404 error response. The exception should be the Http404."
     try:
         tried = exception.args[0]['tried']
-    except (IndexError, TypeError):
+    except (IndexError, TypeError, KeyError):
         tried = []
     else:
         if not tried:
@@ -398,6 +421,10 @@ TECHNICAL_500_TEMPLATE = """
     <tr>
       <th>Request URL:</th>
       <td>{{ request.build_absolute_uri|escape }}</td>
+    </tr>
+    <tr>
+      <th>Django Version:</th>
+      <td>{{ django_version_info }}</td>
     </tr>
     <tr>
       <th>Exception Type:</th>
@@ -809,7 +836,7 @@ EMPTY_URLCONF_TEMPLATE = """
 <div id="instructions">
   <p>Of course, you haven't actually done any work yet. Here's what to do next:</p>
   <ul>
-    <li>If you plan to use a database, edit the <code>DATABASE_*</code> settings in <code>{{ project_name }}/settings.py</code>.</li>
+    <li>If you plan to use a database, edit the <code>DATABASES</code> setting in <code>{{ project_name }}/settings.py</code>.</li>
     <li>Start your first app by running <code>python {{ project_name }}/manage.py startapp [appname]</code>.</li>
   </ul>
 </div>

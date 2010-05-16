@@ -1,20 +1,16 @@
 """Default variable filters."""
 
 import re
-
-try:
-    from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
-except ImportError:
-    from django.utils._decimal import Decimal, InvalidOperation, ROUND_HALF_UP
-
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import random as random_module
 try:
     from functools import wraps
 except ImportError:
-    from django.utils.functional import wraps  # Python 2.3, 2.4 fallback.
+    from django.utils.functional import wraps  # Python 2.4 fallback.
 
 from django.template import Variable, Library
 from django.conf import settings
+from django.utils import formats
 from django.utils.translation import ugettext, ungettext
 from django.utils.encoding import force_unicode, iri_to_uri
 from django.utils.safestring import mark_safe, SafeData
@@ -68,22 +64,22 @@ capfirst.is_safe=True
 capfirst = stringfilter(capfirst)
 
 _base_js_escapes = (
-    ('\\', r'\x5C'),
-    ('\'', r'\x27'),
-    ('"', r'\x22'),
-    ('>', r'\x3E'),
-    ('<', r'\x3C'),
-    ('&', r'\x26'),
-    ('=', r'\x3D'),
-    ('-', r'\x2D'),
-    (';', r'\x3B'),
+    ('\\', r'\u005C'),
+    ('\'', r'\u0027'),
+    ('"', r'\u0022'),
+    ('>', r'\u003E'),
+    ('<', r'\u003C'),
+    ('&', r'\u0026'),
+    ('=', r'\u003D'),
+    ('-', r'\u002D'),
+    (';', r'\u003B'),
     (u'\u2028', r'\u2028'),
     (u'\u2029', r'\u2029')
 )
 
 # Escape every ASCII character with a value less than 32.
 _js_escapes = (_base_js_escapes +
-               tuple([('%c' % z, '\\x%02X' % z) for z in range(32)]))
+               tuple([('%c' % z, '\\u%04X' % z) for z in range(32)]))
 
 def escapejs(value):
     """Hex encodes characters for use in JavaScript strings."""
@@ -162,18 +158,18 @@ def floatformat(text, arg=-1):
 
     try:
         m = int(d) - d
-    except (OverflowError, InvalidOperation):
+    except (ValueError, OverflowError, InvalidOperation):
         return input_val
 
     if not m and p < 0:
-        return mark_safe(u'%d' % (int(d)))
+        return mark_safe(formats.number_format(u'%d' % (int(d)), 0))
 
     if p == 0:
         exp = Decimal(1)
     else:
         exp = Decimal('1.0') / (Decimal(10) ** abs(p))
     try:
-        return mark_safe(u'%s' % str(d.quantize(exp, ROUND_HALF_UP)))
+        return mark_safe(formats.number_format(u'%s' % str(d.quantize(exp, ROUND_HALF_UP)), abs(p)))
     except InvalidOperation:
         return input_val
 floatformat.is_safe = True
@@ -249,7 +245,8 @@ stringformat.is_safe = True
 
 def title(value):
     """Converts a string into titlecase."""
-    return re.sub("([a-z])'([A-Z])", lambda m: m.group(0).lower(), value.title())
+    t = re.sub("([a-z])'([A-Z])", lambda m: m.group(0).lower(), value.title())
+    return re.sub("\d([A-Z])", lambda m: m.group(0).lower(), t)
 title.is_safe = True
 title = stringfilter(title)
 
@@ -649,7 +646,13 @@ unordered_list.needs_autoescape = True
 
 def add(value, arg):
     """Adds the arg to the value."""
-    return int(value) + int(arg)
+    try:
+        return int(value) + int(arg)
+    except (ValueError, TypeError):
+        try:
+            return value + arg
+        except:
+            return value
 add.is_safe = False
 
 def get_digit(value, arg):
@@ -684,22 +687,28 @@ def date(value, arg=None):
     if arg is None:
         arg = settings.DATE_FORMAT
     try:
-        return format(value, arg)
+        return formats.date_format(value, arg)
     except AttributeError:
-        return ''
+        try:
+            return format(value, arg)
+        except AttributeError:
+            return ''
 date.is_safe = False
 
 def time(value, arg=None):
     """Formats a time according to the given format."""
-    from django.utils.dateformat import time_format
+    from django.utils import dateformat
     if value in (None, u''):
         return u''
     if arg is None:
         arg = settings.TIME_FORMAT
     try:
-        return time_format(value, arg)
+        return formats.time_format(value, arg)
     except AttributeError:
-        return ''
+        try:
+            return dateformat.time_format(value, arg)
+        except AttributeError:
+            return ''
 time.is_safe = False
 
 def timesince(value, arg=None):
@@ -791,7 +800,7 @@ def filesizeformat(bytes):
     """
     try:
         bytes = float(bytes)
-    except TypeError:
+    except (TypeError,ValueError,UnicodeDecodeError):
         return u"0 bytes"
 
     if bytes < 1024:

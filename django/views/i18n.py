@@ -1,10 +1,13 @@
+import os
+import gettext as gettext_module
+
 from django import http
 from django.conf import settings
 from django.utils import importlib
 from django.utils.translation import check_for_language, activate, to_locale, get_language
 from django.utils.text import javascript_quote
-import os
-import gettext as gettext_module
+from django.utils.encoding import smart_unicode
+from django.utils.formats import get_format_modules
 
 def set_language(request):
     """
@@ -31,6 +34,33 @@ def set_language(request):
             else:
                 response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code)
     return response
+
+def get_formats():
+    """
+    Returns all formats strings required for i18n to work
+    """
+    FORMAT_SETTINGS = (
+        'DATE_FORMAT', 'DATETIME_FORMAT', 'TIME_FORMAT',
+        'YEAR_MONTH_FORMAT', 'MONTH_DAY_FORMAT', 'SHORT_DATE_FORMAT',
+        'SHORT_DATETIME_FORMAT', 'FIRST_DAY_OF_WEEK', 'DECIMAL_SEPARATOR',
+        'THOUSAND_SEPARATOR', 'NUMBER_GROUPING',
+        'DATE_INPUT_FORMATS', 'TIME_INPUT_FORMATS', 'DATETIME_INPUT_FORMATS'
+    )
+    result = {}
+    for module in [settings] + get_format_modules(reverse=True):
+        for attr in FORMAT_SETTINGS:
+            try:
+                result[attr] = getattr(module, attr)
+            except AttributeError:
+                pass
+    src = []
+    for k, v in result.items():
+        if isinstance(v, (basestring, int)):
+            src.append("formats['%s'] = '%s';\n" % (javascript_quote(k), javascript_quote(smart_unicode(v))))
+        elif isinstance(v, (tuple, list)):
+            v = [javascript_quote(smart_unicode(value)) for value in v]
+            src.append("formats['%s'] = ['%s'];\n" % (javascript_quote(k), "', '".join(v)))
+    return ''.join(src)
 
 NullSource = """
 /* gettext identity library */
@@ -67,6 +97,25 @@ function ngettext(singular, plural, count) {
 }
 
 function gettext_noop(msgid) { return msgid; }
+
+"""
+
+LibFormatHead = """
+/* formatting library */
+
+var formats = new Array();
+
+"""
+
+LibFormatFoot = """
+function get_format(format_type) {
+    var value = formats[format_type];
+    if (typeof(value) == 'undefined') {
+      return msgid;
+    } else {
+      return value;
+    }
+}
 """
 
 SimplePlural = """
@@ -99,7 +148,8 @@ def null_javascript_catalog(request, domain=None, packages=None):
     Returns "identity" versions of the JavaScript i18n functions -- i.e.,
     versions that don't actually do anything.
     """
-    return http.HttpResponse(NullSource + InterPolate, 'text/javascript')
+    src = [NullSource, InterPolate, LibFormatHead, get_formats(), LibFormatFoot]
+    return http.HttpResponse(''.join(src), 'text/javascript')
 
 def javascript_catalog(request, domain='djangojs', packages=None):
     """
@@ -120,13 +170,14 @@ def javascript_catalog(request, domain='djangojs', packages=None):
                 activate(request.GET['language'])
     if packages is None:
         packages = ['django.conf']
-    if type(packages) in (str, unicode):
+    if isinstance(packages, basestring):
         packages = packages.split('+')
     packages = [p for p in packages if p == 'django.conf' or p in settings.INSTALLED_APPS]
     default_locale = to_locale(settings.LANGUAGE_CODE)
     locale = to_locale(get_language())
     t = {}
     paths = []
+    en_catalog_missing = False
     # first load all english languages files for defaults
     for package in packages:
         p = importlib.import_module(package)
@@ -136,7 +187,12 @@ def javascript_catalog(request, domain='djangojs', packages=None):
             catalog = gettext_module.translation(domain, path, ['en'])
             t.update(catalog._catalog)
         except IOError:
-            # 'en' catalog was missing. This is harmless.
+            # 'en' catalog was missing.
+            if locale.startswith('en'):
+                # If 'en' is the selected language this would cause issues
+                # later on if default_locale is something other than 'en'.
+                en_catalog_missing = True
+            # Otherwise it is harmless.
             pass
     # next load the settings.LANGUAGE_CODE translations if it isn't english
     if default_locale != 'en':
@@ -149,13 +205,21 @@ def javascript_catalog(request, domain='djangojs', packages=None):
                 t.update(catalog._catalog)
     # last load the currently selected language, if it isn't identical to the default.
     if locale != default_locale:
-        for path in paths:
-            try:
-                catalog = gettext_module.translation(domain, path, [locale])
-            except IOError:
-                catalog = None
-            if catalog is not None:
-                t.update(catalog._catalog)
+        # If the flag en_catalog_missing has been set, the currently
+        # selected language is English but it doesn't have a translation
+        # catalog (presumably due to being the language translated from).
+        # If that is the case, a wrong language catalog might have been
+        # loaded in the previous step. It needs to be discarded.
+        if en_catalog_missing:
+            t = {}
+        else:
+            for path in paths:
+                try:
+                    catalog = gettext_module.translation(domain, path, [locale])
+                except IOError:
+                    catalog = None
+                if catalog is not None:
+                    t = catalog._catalog
     src = [LibHead]
     plural = None
     if '' in t:
@@ -174,21 +238,25 @@ def javascript_catalog(request, domain='djangojs', packages=None):
     for k, v in t.items():
         if k == '':
             continue
-        if type(k) in (str, unicode):
+        if isinstance(k, basestring):
             csrc.append("catalog['%s'] = '%s';\n" % (javascript_quote(k), javascript_quote(v)))
-        elif type(k) == tuple:
+        elif isinstance(k, tuple):
             if k[0] not in pdict:
                 pdict[k[0]] = k[1]
             else:
                 pdict[k[0]] = max(k[1], pdict[k[0]])
             csrc.append("catalog['%s'][%d] = '%s';\n" % (javascript_quote(k[0]), k[1], javascript_quote(v)))
         else:
-            raise TypeError, k
+            raise TypeError(k)
     csrc.sort()
-    for k,v in pdict.items():
+    for k, v in pdict.items():
         src.append("catalog['%s'] = [%s];\n" % (javascript_quote(k), ','.join(["''"]*(v+1))))
     src.extend(csrc)
     src.append(LibFoot)
     src.append(InterPolate)
+    src.append(LibFormatHead)
+    src.append(get_formats())
+    src.append(LibFormatFoot)
     src = ''.join(src)
     return http.HttpResponse(src, 'text/javascript')
+

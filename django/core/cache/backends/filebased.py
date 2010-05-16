@@ -2,6 +2,7 @@
 
 import os
 import time
+import shutil
 try:
     import cPickle as pickle
 except ImportError:
@@ -41,13 +42,15 @@ class CacheClass(BaseCache):
         fname = self._key_to_file(key)
         try:
             f = open(fname, 'rb')
-            exp = pickle.load(f)
-            now = time.time()
-            if exp < now:
+            try:
+                exp = pickle.load(f)
+                now = time.time()
+                if exp < now:
+                    self._delete(fname)
+                else:
+                    return pickle.load(f)
+            finally:
                 f.close()
-                self._delete(fname)
-            else:
-                return pickle.load(f)
         except (IOError, OSError, EOFError, pickle.PickleError):
             pass
         return default
@@ -66,9 +69,12 @@ class CacheClass(BaseCache):
                 os.makedirs(dirname)
 
             f = open(fname, 'wb')
-            now = time.time()
-            pickle.dump(now + timeout, f, pickle.HIGHEST_PROTOCOL)
-            pickle.dump(value, f, pickle.HIGHEST_PROTOCOL)
+            try:
+                now = time.time()
+                pickle.dump(now + timeout, f, pickle.HIGHEST_PROTOCOL)
+                pickle.dump(value, f, pickle.HIGHEST_PROTOCOL)
+            finally:
+                f.close()
         except (IOError, OSError):
             pass
 
@@ -92,14 +98,16 @@ class CacheClass(BaseCache):
         fname = self._key_to_file(key)
         try:
             f = open(fname, 'rb')
-            exp = pickle.load(f)
-            now = time.time()
-            if exp < now:
+            try:
+                exp = pickle.load(f)
+                now = time.time()
+                if exp < now:
+                    self._delete(fname)
+                    return False
+                else:
+                    return True
+            finally:
                 f.close()
-                self._delete(fname)
-                return False
-            else:
-                return True
         except (IOError, OSError, EOFError, pickle.PickleError):
             return False
 
@@ -129,7 +137,7 @@ class CacheClass(BaseCache):
         try:
             os.makedirs(self._dir)
         except OSError:
-            raise EnvironmentError, "Cache directory '%s' does not exist and could not be created'" % self._dir
+            raise EnvironmentError("Cache directory '%s' does not exist and could not be created'" % self._dir)
 
     def _key_to_file(self, key):
         """
@@ -150,3 +158,9 @@ class CacheClass(BaseCache):
             count += len(files)
         return count
     _num_entries = property(_get_num_entries)
+
+    def clear(self):
+        try:
+            shutil.rmtree(self._dir)
+        except (IOError, OSError):
+            pass

@@ -14,21 +14,30 @@ from django.template.context import RequestContext
 from django.utils.hashcompat import md5_constructor
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.formtools.utils import security_hash
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
+
 
 class FormWizard(object):
-    # Dictionary of extra template context variables.
-    extra_context = {}
-
     # The HTML (and POST data) field name for the "step" variable.
     step_field_name="wizard_step"
 
     # METHODS SUBCLASSES SHOULDN'T OVERRIDE ###################################
 
     def __init__(self, form_list, initial=None):
-        "form_list should be a list of Form classes (not instances)."
+        """
+        Start a new wizard with a list of forms.
+        
+        form_list should be a list of Form classes (not instances).
+        """
         self.form_list = form_list[:]
         self.initial = initial or {}
-        self.step = 0 # A zero-based counter keeping track of which step we're in.
+
+        # Dictionary of extra template context variables.
+        self.extra_context = {}
+
+        # A zero-based counter keeping track of which step we're in.
+        self.step = 0 
 
     def __repr__(self):
         return "step: %d\nform_list: %s\ninitial_data: %s" % (self.step, self.form_list, self.initial)
@@ -44,6 +53,7 @@ class FormWizard(object):
         # hook methods might alter self.form_list.
         return len(self.form_list)
 
+    @method_decorator(csrf_protect)
     def __call__(self, request, *args, **kwargs):
         """
         Main method that does all the hard work, conforming to the Django view

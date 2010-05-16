@@ -53,7 +53,7 @@
     vertical-align: middle;
 }
 
-#changelist table thead th:first-child {
+#changelist table thead th.action-checkbox-column {
     width: 1.5em;
     text-align: center;
 }
@@ -242,6 +242,21 @@
     border-top: 1px solid #fff;
     border-bottom: 1px solid #ddd;
     background: white url(../img/admin/nav-bg-reverse.gif) 0 -10px repeat-x;
+}
+
+#changelist .actions.selected {
+    background: #fffccf;
+    border-top: 1px solid #fffee8;
+    border-bottom: 1px solid #edecd6;
+}
+
+#changelist .actions span.all,
+#changelist .actions span.action-counter,
+#changelist .actions span.clear,
+#changelist .actions span.question {
+    font-size: 11px;
+    margin: 0 0.5em;
+    display: none;
 }
 
 #changelist .actions:last-child {

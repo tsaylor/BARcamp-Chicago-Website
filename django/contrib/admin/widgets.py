@@ -2,7 +2,7 @@
 Form Widget classes specific to the Django admin site.
 """
 
-import copy
+import django.utils.copycompat as copy
 
 from django import forms
 from django.forms.widgets import RadioFieldRenderer
@@ -33,6 +33,9 @@ class FilteredSelectMultiple(forms.SelectMultiple):
         super(FilteredSelectMultiple, self).__init__(attrs, choices)
 
     def render(self, name, value, attrs=None, choices=()):
+        if attrs is None: attrs = {}
+        attrs['class'] = 'selectfilter'
+        if self.is_stacked: attrs['class'] += 'stacked'
         output = [super(FilteredSelectMultiple, self).render(name, value, attrs, choices)]
         output.append(u'<script type="text/javascript">addEvent(window, "load", function(e) {')
         # TODO: "id_" is hard-coded here. This should instead use the correct
@@ -41,21 +44,21 @@ class FilteredSelectMultiple(forms.SelectMultiple):
             (name, self.verbose_name.replace('"', '\\"'), int(self.is_stacked), settings.ADMIN_MEDIA_PREFIX))
         return mark_safe(u''.join(output))
 
-class AdminDateWidget(forms.TextInput):
+class AdminDateWidget(forms.DateTimeInput):
     class Media:
         js = (settings.ADMIN_MEDIA_PREFIX + "js/calendar.js",
               settings.ADMIN_MEDIA_PREFIX + "js/admin/DateTimeShortcuts.js")
 
-    def __init__(self, attrs={}):
-        super(AdminDateWidget, self).__init__(attrs={'class': 'vDateField', 'size': '10'})
+    def __init__(self, attrs={}, format=None):
+        super(AdminDateWidget, self).__init__(attrs={'class': 'vDateField', 'size': '10'}, format=format)
 
-class AdminTimeWidget(forms.TextInput):
+class AdminTimeWidget(forms.TimeInput):
     class Media:
         js = (settings.ADMIN_MEDIA_PREFIX + "js/calendar.js",
               settings.ADMIN_MEDIA_PREFIX + "js/admin/DateTimeShortcuts.js")
 
-    def __init__(self, attrs={}):
-        super(AdminTimeWidget, self).__init__(attrs={'class': 'vTimeField', 'size': '8'})
+    def __init__(self, attrs={}, format=None):
+        super(AdminTimeWidget, self).__init__(attrs={'class': 'vTimeField', 'size': '8'}, format=format)
 
 class AdminSplitDateTime(forms.SplitDateTimeWidget):
     """
@@ -102,8 +105,9 @@ class ForeignKeyRawIdWidget(forms.TextInput):
     A Widget for displaying ForeignKeys in the "raw_id" interface rather than
     in a <select> box.
     """
-    def __init__(self, rel, attrs=None):
+    def __init__(self, rel, attrs=None, using=None):
         self.rel = rel
+        self.db = using
         super(ForeignKeyRawIdWidget, self).__init__(attrs)
 
     def render(self, name, value, attrs=None):
@@ -129,7 +133,7 @@ class ForeignKeyRawIdWidget(forms.TextInput):
 
     def base_url_parameters(self):
         params = {}
-        if self.rel.limit_choices_to:
+        if self.rel.limit_choices_to and hasattr(self.rel.limit_choices_to, 'items'):
             items = []
             for k, v in self.rel.limit_choices_to.items():
                 if isinstance(v, list):
@@ -148,7 +152,10 @@ class ForeignKeyRawIdWidget(forms.TextInput):
 
     def label_for_value(self, value):
         key = self.rel.get_related_field().name
-        obj = self.rel.to._default_manager.get(**{key: value})
+        try:
+            obj = self.rel.to._default_manager.using(self.db).get(**{key: value})
+        except self.rel.to.DoesNotExist:
+            return ''
         return '&nbsp;<strong>%s</strong>' % escape(truncate_words(obj, 14))
 
 class ManyToManyRawIdWidget(ForeignKeyRawIdWidget):
@@ -156,8 +163,8 @@ class ManyToManyRawIdWidget(ForeignKeyRawIdWidget):
     A Widget for displaying ManyToMany ids in the "raw_id" interface rather than
     in a <select multiple> box.
     """
-    def __init__(self, rel, attrs=None):
-        super(ManyToManyRawIdWidget, self).__init__(rel, attrs)
+    def __init__(self, rel, attrs=None, using=None):
+        super(ManyToManyRawIdWidget, self).__init__(rel, attrs, using=None)
 
     def render(self, name, value, attrs=None):
         attrs['class'] = 'vManyToManyRawIdAdminField'

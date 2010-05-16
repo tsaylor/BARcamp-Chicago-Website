@@ -344,7 +344,7 @@ table.orderable-initalized .order-cell, body>tr>td.order-cell {
 
 /* FORM DEFAULTS */
 
-input, textarea, select {
+input, textarea, select, .form-row p {
     margin: 2px 0;
     padding: 2px 3px;
     vertical-align: middle;
@@ -365,7 +365,7 @@ input[type=text], input[type=password], textarea, select, .vTextField {
 
 .button, input[type=submit], input[type=button], .submit-row input {
     background: white url(../img/admin/nav-bg.gif) bottom repeat-x;
-    padding: 3px;
+    padding: 3px 5px;
     color: black;
     border: 1px solid #bbb;
     border-color: #ddd #aaa #aaa #ddd;
