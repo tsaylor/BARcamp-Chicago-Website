@@ -1,0 +1,24 @@
+{% extends "sphene/community/base.html" %}
+{% load i18n %}
+{% load sph_extras %}
+
+{% block content %}
+  {% trans "Profile for" %} {% sph_html_user profile_user %}{% if has_edit_permission %} [ <a href="{{ profile_edit_url }}">{% trans "Edit" %}</a> ]{% endif %}<br/><br/>
+  <table class="sph_community_profile" border="0">
+    <tr>
+      <th>{% trans "Name" %}</th>
+      <td>{{ profile_user|sph_user_displayname }}</td>
+    </tr>
+    <tr>
+      <th>{% trans "Email Address" %}</th>
+      <td>{{ profile_user|sph_publicemailaddress }}</td>
+    </tr>
+    {{ additionalprofile }}
+  </table>
+
+  {% for block in profile_blocks %}
+    <div class="sph_community_blocks">
+      {{ block }}
+    </div>
+  {% endfor %}
+{% endblock %}

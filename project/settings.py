@@ -1,4 +1,5 @@
 import os
+from django.conf import global_settings
 # Django settings for project project.
 
 DEBUG = False
@@ -57,12 +58,17 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.load_template_source',
     'django.template.loaders.filesystem.load_template_source',
 #     'django.template.loaders.eggs.load_template_source',
+
+    'sphene.community.groupaware_templateloader.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
+    'sphene.community.middleware.ThreadLocals',
+    'sphene.community.middleware.GroupMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -73,18 +79,28 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'sphene.community.context_processors.navigation',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+
     'mptt',
     'tagging',
     'tinymce',
+
     'feincms',
     'feincms.module.blog',
     'feincms.module.page',
+
+    'sphene.sphwiki',
+    'sphene.community',
+
     'website',
 )
 

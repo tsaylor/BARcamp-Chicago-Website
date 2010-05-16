@@ -1,0 +1,101 @@
+{% extends "sphene/sphboard/base.html" %}
+{% load i18n %}
+{% load sphboard_extras %}
+{% load sph_extras %}
+{% load sph_pagination %}
+
+{% block content %}
+
+  <p>{% if search_posts_url %}<a href="{{ search_posts_url }}?category_id={{ category.id }}">Search</a> | {% endif %}<a href="{% sph_url2 sphboard_latest category_id=category_id %}">{% trans "Latest" %}</a> | {% sphboard_displayBreadcrumbsForCategory category 0 1 %}</p>
+
+  {% if user.is_authenticated %}
+    <p>
+    {% if category %}
+      {% include "sphene/sphboard/_category_monitor.html" %}
+    {% else %}
+      {% if group.has_monitor %}
+        {% trans "You are currently receiving email notifications on new posts." %} - <a href="{% sph_url2 sphboard_toggle_monitor monitortype="group" object_id=group.id %}">{% trans "Stop notifications" %}</a>
+      {% else %}
+        {% if rootCategories %}
+          <a href="{% sph_url2 sphboard_toggle_monitor monitortype="group" object_id=group.id %}">{% trans "Notify me by email on new posts." %}</a>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    </p>
+  {% endif %}
+
+  {% if rootCategories %}
+  <table class="sphboard_categories">
+    <tr>
+      <th colspan='6'>{% trans "Title" %}</th>
+      <th>{% trans "Threads" %}</th>
+      <th>{% trans "Posts" %}</th>
+      <th>{% trans "Last Post" %}</th>
+    </tr>
+    {% sphboard_displayCategories rootCategories 5 %}
+  </table>
+  <br/><br/>
+  {% else %}
+    {% if not isShowLatest %}
+      {% if not category %}
+        {% trans "There are currently no categories. (Or you have no permission to see them.)" %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+  {% if not category.get_category_type.is_separator %}
+  {% if isShowLatest or category.canContainPosts %}
+    {% block above_thread_list %}
+    {% endblock %}
+    {% include category.get_category_type.get_new_thread_link_template %}
+    <table class="sphboard_thread_list">
+      {% block thread_list_header %}
+      <tr>
+        <th class="sphboard_mainhead" colspan="{% if sph_settings.board_count_views %}5{% else %}4{% endif %}">{% trans "Threads" %}</th>
+      </tr>
+      <tr>
+        <th colspan="2">{% trans "Subject / Author" %}</th>
+        {% if sph_settings.board_count_views %}
+          <th>{% trans "Views" %}</th>
+        {% endif %}
+        <th>{% trans "Posts" %}</th>
+        <th>{% trans "Last Post" %}</th>
+      </tr>
+      {% endblock thread_list_header %}
+      {% for thread in thread_list %}
+        <tr>
+          <td width="20px"><img src="{{ MEDIA_URL }}sphene/sphboard/icons/{% if thread.has_new_posts %}new{% endif %}folder.gif" width='16px' height='16px' title='Heat: {{ thread.heat }}' /></td>
+          {% if thread.is_moved %}
+            <td colspan="4"><small>
+            {% blocktrans with thread.get_absolute_url as th_url and thread.subject as th_subject and thread.category.get_absolute_url as cat_url and thread.root_post.category.name as cat_name %}Thread was moved: <a href="{{ th_url }}">{{ th_subject }}</a> into <a href="{{ cat_url }}">{{ cat_name }}</a>.{% endblocktrans %}
+            </small></td>
+          {% else %}
+          <td>{% if thread.is_sticky %}<b>{% trans "Sticky:" %}</b> {% endif %}{% if thread.is_hot %}<b>{% trans "Hot:" %}</b> {% endif %}{% if thread.is_poll %}{% trans "Poll:" %} {% endif %}{% if thread.is_closed %}{% trans "Locked:" %} {% endif %}{% block thread_list_subject %}<a href="{{ thread.get_absolute_url }}">{{ thread.subject }}</a>{% endblock %}{% if thread.has_paging %} ( {% sph_pagination thread.get_page_count -1 thread.get_absolute_url_nopaging %} ){% endif %}<br/><small>{% if isShowLatest %}{% sphboard_displayBreadcrumbsForCategory thread.category 1 %} - {% endif %}{% trans "By" %} {% sphboard_displayUserName thread.author %}</small></td>
+          {% block thread_list_info %}
+          {% if sph_settings.board_count_views %}
+            <td class="sphboard_viewcount">{{ thread.view_count }}</td>
+          {% endif %}
+          <td class="sphboard_postcount">{{ thread.post_count }}</td>
+          <td class="sphboard_latestpost">{% sphboard_latestPost thread.latest_post 0 %}</td>
+          {% endblock %}
+          {% endif %}
+        </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="{% if sph_settings.board_count_views %}5{% else %}4{% endif %}"><span class="board_threadcount">{% blocktrans %}{{ hits }} Threads in this category.{% endblocktrans %}</span><span class="board_pagination">{% sph_pagination pages page %}</span></td>
+      </tr>
+    </table>
+    {% include category.get_category_type.get_new_thread_link_template %}
+    {% if user.is_authenticated and category.has_new_posts %}
+      <p><a href="{% sph_url2 sphene.sphboard.views.catchup  category_id=category.id %}" title="{% trans "Mark all Posts in this Category as read." %}">{% trans "Catch Up" %}</a></p>
+    {% endif %}
+  {% endif %}
+  {% endif %}
+
+  {% if not category and user.is_authenticated %}
+      <p><a href="{% sph_url2 sphene.sphboard.views.catchup category_id=0 %}">{% trans "Mark all as read" %}</a></p>
+  {% endif %}
+
+  {% block below_thread_list %}
+  {% endblock %}
+{% endblock %}

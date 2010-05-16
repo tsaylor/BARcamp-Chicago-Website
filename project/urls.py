@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^wiki/', include('sphene.sphwiki.urls'), {'groupName': 'Barcamp'}),
     url(r'^$|^(.*)/$', 'feincms.views.base.handler'),
 )
 
