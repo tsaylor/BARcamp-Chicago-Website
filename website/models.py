@@ -4,6 +4,18 @@ from feincms.module.page.models import Page
 from feincms.module.blog.models import Entry
 from feincms.content.richtext.models import RichTextContent
 from feincms.content.image.models import ImageContent
+from django.contrib.markup.templatetags.markup import textile
+from django.db import models
+
+
+class TextilePageContent(models.Model):
+    content = models.TextField()
+
+    class Meta:
+        abstract = True
+
+    def render(self, **kwargs):
+        return textile(self.content)
 
 # feincms page stuff
 Page.register_extensions('datepublisher', 'translations') # Example set of extensions
@@ -23,6 +35,10 @@ Page.create_content_type(ImageContent, POSITION_CHOICES=(
     ('left', _('left')),
     ('right', _('right')),
     ))
+
+Page.create_content_type(TextilePageContent)
+
+
 
 
 # feincms blog stuff
