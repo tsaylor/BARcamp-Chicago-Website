@@ -2,11 +2,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.markup.templatetags.markup import textile
 from django.db import models
 
+from feincms.content.application.models import ApplicationContent
 from feincms.module.page.models import Page
 from feincms.module.blog.models import Entry
 from feincms.content.richtext.models import RichTextContent
 from feincms.content.image.models import ImageContent
-from feincms.content.application.models import ApplicationContent
 
 
 class TextilePageContent(models.Model):
@@ -19,7 +19,7 @@ class TextilePageContent(models.Model):
         return textile(self.content)
 
 # feincms page stuff
-Page.register_extensions('datepublisher', 'translations') # Example set of extensions
+Page.register_extensions('datepublisher') # Example set of extensions
 
 Page.register_templates({
     'title': _('Standard template'),
@@ -37,7 +37,7 @@ Page.create_content_type(ImageContent, POSITION_CHOICES=(
     ('right', _('right')),
     ))
 Page.create_content_type(ApplicationContent, APPLICATIONS=(
-    ('news.urls', 'News application'),
+    ('website.entry_urls', 'News list'),
     ))
 
 Page.create_content_type(TextilePageContent)
@@ -46,8 +46,6 @@ Page.create_content_type(TextilePageContent)
 
 
 # feincms blog stuff
-Entry.register_extensions('translations') # Example set of extensions
-
 Entry.register_templates({
     'title': _('Standard template'),
     'path': 'base.html',
