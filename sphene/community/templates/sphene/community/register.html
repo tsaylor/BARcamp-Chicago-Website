@@ -1,0 +1,14 @@
+{% extends "sphene/sphboard/base.html" %}
+{% load i18n %}
+{% block content %}
+
+  {% trans "Please Enter your email address. You will then receive a URL to continue registration." %}
+
+  <form method="post" action=".">
+    <table>
+      {{ form }}
+    </table>
+    <input type="submit" value="{% trans "Send Email Validation Code" %}" />
+  </form>
+
+{% endblock %}

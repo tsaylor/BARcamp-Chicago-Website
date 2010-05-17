@@ -1,0 +1,365 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-19 21:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:37
+msgid ""
+"Max upload filesize of %{max_size}d bytes exceeded. (Your file had %{size}d "
+"bytes)"
+msgstr ""
+
+#: __init__.py:55
+msgid "Uploaded an invalid image."
+msgstr ""
+
+#: __init__.py:67
+msgid "Delete avatar"
+msgstr ""
+
+#: __init__.py:69 __init__.py:116
+msgid "Avatar"
+msgstr ""
+
+#: __init__.py:116 templatetags/sph_extras.py:313
+msgid "Users avatar"
+msgstr ""
+
+#: fields.py:12
+msgid "Comma separated list of tags."
+msgstr ""
+
+#: forms.py:15
+msgid "First name"
+msgstr ""
+
+#: forms.py:16
+msgid "Last name"
+msgstr ""
+
+#: forms.py:17 views.py:28 views.py:52 views.py:140
+msgid "Email address"
+msgstr ""
+
+#: forms.py:19
+msgid "Change password"
+msgstr ""
+
+#: forms.py:20
+msgid "To modify your password fill out the following three fields."
+msgstr ""
+
+#: forms.py:22
+msgid "Current password"
+msgstr ""
+
+#: forms.py:25
+msgid "New password"
+msgstr ""
+
+#: forms.py:28
+msgid "Retype your new password"
+msgstr ""
+
+#: forms.py:40
+msgid "Invalid password."
+msgstr ""
+
+#: forms.py:47 views.py:152
+msgid "Passwords do not match."
+msgstr ""
+
+#: forms.py:57
+msgid "-- Select Object Type --"
+msgstr ""
+
+#: forms.py:107
+msgid "Allows you to limit the given permission to only one specific object."
+msgstr ""
+
+#: forms.py:124
+msgid "User does not exist."
+msgstr ""
+
+#: forms.py:131
+msgid "Invalid Object Type"
+msgstr ""
+
+#: models.py:405
+msgid "Community settings"
+msgstr ""
+
+#: models.py:406
+msgid "Public email address"
+msgstr ""
+
+#: models.py:455
+msgid "Successfully saved community profile."
+msgstr ""
+
+#: sphutils.py:24 templates/sphene/community/_display_username.html:12
+msgid "Anonymous"
+msgstr ""
+
+#: sphutils.py:96
+msgid "Captcha input"
+msgstr ""
+
+#: sphutils.py:126
+msgid "Invalid Captcha response."
+msgstr ""
+
+#: views.py:35 views.py:163
+#, python-format
+msgid "Another user is already registered with the email address %(email)s."
+msgstr ""
+
+#: views.py:59
+msgid "No user found with that email address."
+msgstr ""
+
+#: views.py:82
+msgid "Your requested username / password"
+msgstr ""
+
+#: views.py:84
+#, python-format
+msgid "Your requested username / password for site %(site_name)s"
+msgstr ""
+
+#: views.py:111
+msgid "Email verification required"
+msgstr ""
+
+#: views.py:113
+#, python-format
+msgid "Email verification required for site %(site_name)s"
+msgstr ""
+
+#: views.py:139
+msgid "Username"
+msgstr ""
+
+#: views.py:142
+msgid "Password"
+msgstr ""
+
+#: views.py:144
+msgid "Verify Password"
+msgstr ""
+
+#: views.py:158
+#, python-format
+msgid "The username %(username)s is already taken."
+msgstr ""
+
+#: views.py:322
+msgid "Successfully changed user profile."
+msgstr ""
+
+#: views.py:380
+msgid "Successfully saved role."
+msgstr ""
+
+#: views.py:403
+msgid "Successfully deleted role member."
+msgstr ""
+
+#: views.py:431
+msgid "Successfully added member."
+msgstr ""
+
+#: templates/sphene/community/_pagination.html:2
+msgid "Page:"
+msgstr ""
+
+#: templates/sphene/community/_pagination.html:4
+msgid "Previous"
+msgstr ""
+
+#: templates/sphene/community/_pagination.html:14
+msgid "Next"
+msgstr ""
+
+#: templates/sphene/community/permissiondenied.html:5
+msgid "Permission Denied"
+msgstr ""
+
+#: templates/sphene/community/permissiondenied.html:7
+msgid "You do not have permission to view this page."
+msgstr ""
+
+#: templates/sphene/community/profile.html:6
+msgid "Profile for"
+msgstr ""
+
+#: templates/sphene/community/profile.html:6
+#: templates/sphene/community/admin/permission/role_list.html:20
+msgid "Edit"
+msgstr ""
+
+#: templates/sphene/community/profile.html:9
+#: templates/sphene/community/admin/permission/role_list.html:14
+msgid "Name"
+msgstr ""
+
+#: templates/sphene/community/profile.html:13
+msgid "Email Address"
+msgstr ""
+
+#: templates/sphene/community/profile_edit.html:6
+msgid "Modifying user profile for"
+msgstr ""
+
+#: templates/sphene/community/profile_edit.html:10
+#: templates/sphene/community/accounts/login.html:13
+msgid "Username:"
+msgstr ""
+
+#: templates/sphene/community/profile_edit.html:31
+msgid "Save"
+msgstr ""
+
+#: templates/sphene/community/register.html:5
+msgid ""
+"Please Enter your email address. You will then receive a URL to continue "
+"registration."
+msgstr ""
+
+#: templates/sphene/community/register.html:11
+msgid "Send Email Validation Code"
+msgstr ""
+
+#: templates/sphene/community/register_emailsent.html:5
+#, python-format
+msgid ""
+"An email containing the required validation code has been sent to <b>%(email)"
+"s</b>.<br/>\n"
+"  Please check your emails to continue registration process."
+msgstr ""
+
+#: templates/sphene/community/register_hash.html:5
+#: templates/sphene/community/register_hash_success.html:5
+msgid "User Registration"
+msgstr ""
+
+#: templates/sphene/community/register_hash.html:11
+msgid "Register"
+msgstr ""
+
+#: templates/sphene/community/register_hash_success.html:7
+msgid "Successfully registered user and logged in."
+msgstr ""
+
+#: templates/sphene/community/accounts/forgot.html:5
+msgid ""
+"If you have forgotten your username or password, you can enter your\n"
+"email address here. You will then receive your username and a newly\n"
+"generated password by email."
+msgstr ""
+
+#: templates/sphene/community/accounts/forgot.html:12
+msgid "Send"
+msgstr ""
+
+#: templates/sphene/community/accounts/forgot_sent.html:4
+msgid "A new password was generated for your account."
+msgstr ""
+
+#: templates/sphene/community/accounts/forgot_sent.html:5
+msgid ""
+"You should receive an email containing your username and new password "
+"shortly."
+msgstr ""
+
+#: templates/sphene/community/accounts/logged_out.html:5
+msgid "Successfully logged out."
+msgstr ""
+
+#: templates/sphene/community/accounts/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/sphene/community/accounts/login.html:14
+msgid "Password:"
+msgstr ""
+
+#: templates/sphene/community/accounts/login.html:17
+msgid "Login"
+msgstr ""
+
+#: templates/sphene/community/accounts/login.html:22
+msgid "Cancel"
+msgstr ""
+
+#: templates/sphene/community/accounts/login.html:22
+msgid "Forgot Username/Password ?"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/base.html:7
+msgid "Role List"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/base.html:9
+#: templates/sphene/community/admin/permission/role_list.html:16
+msgid "Members"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_edit.html:11
+#: templates/sphene/community/admin/permission/role_member_add.html:11
+msgid "Store"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_list.html:13
+msgid "Options"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_list.html:15
+msgid "Flags"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_list.html:20
+msgid "Manage Members"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_list.html:28
+msgid "Create Role"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_member_list.html:8
+#, python-format
+msgid "Members of the role '%(role_name)s'."
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_member_list.html:13
+msgid "User"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_member_list.html:14
+msgid "Limitations"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_member_list.html:18
+msgid "Remove"
+msgstr ""
+
+#: templates/sphene/community/admin/permission/role_member_list.html:25
+msgid "Add Member"
+msgstr ""
+
+#: templatetags/sph_extras.py:316
+msgid "Submit"
+msgstr ""

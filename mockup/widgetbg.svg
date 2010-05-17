@@ -615,7 +615,10 @@
      transform="translate(-373.642, -318.344)">
     <g
        id="g2078"
-       transform="matrix(0.9, 0, 0, 0.9, 45.2154, 39.0663)">
+       transform="matrix(0.9, 0, 0, 0.9, 45.2154, 39.0663)"
+       inkscape:export-xdpi="137.15126"
+       inkscape:export-ydpi="137.15126"
+       inkscape:export-filename="/home/orblivion/projects/barcampWebsite/BARcamp-Chicago-Website/mockup/widgetbg.png">
       <rect
          style="fill: rgb(138, 226, 52); fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0.875; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 0.875, 1.75; stroke-dashoffset: 0pt; stroke-opacity: 1;"
          id="rect1942"

@@ -1,0 +1,108 @@
+{% extends "sphene/sphblog/base.html" %}
+
+{% load sph_extras %}
+{% load sphblog_extras %}
+{% load i18n %}
+
+{% block subtitle %}
+  {% if tag %}
+    {{ tag.name }}
+  {% else %}
+    {# {{ block.super }} #}
+    {% trans "Blog" %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {% if allowpostcategories %}
+    <form method="post" name="postthread" action="{% sph_url 'sphblog_postthread' %}">
+      <select name="category">
+	{% for category in allowpostcategories %}
+	  <option value="{{ category.id }}">{{ category.name }}</option>
+	{% endfor %}
+      </select>
+      <input type="submit" value="{% trans "Submit new Post" %}" />
+    </form>
+  {% endif %}
+
+  {% if category %}
+    <center><h1>{{ category.name }}</h1></center>
+    <p>
+    {% if user.is_authenticated %}
+      {% include "sphene/sphboard/_category_monitor.html" %}
+    {% else %}
+      Log in to add email notification.
+    {% endif %}
+    </p>
+  {% endif %}
+
+  {% if archive_year %}
+    {% if archive_month %}
+        <center><h2>Archive for {{ archive_month|humanize_month }}, {{ archive_year }}</h2></center>
+    {% else %}
+        <center><h2>Archive for {{ archive_year }}</h2></center>
+    {% endif %}
+  {% endif %}
+
+  {% if tag %}
+    <p class="sphtagheader">{% trans "Tag" %}: {{ tag.name }} / <a href="{% sph_url2 sphblog_index %}">{% trans "Back" %}</a></p>
+  {% endif %}
+
+  {% if not threads.object_list %}
+    <p>{% trans "There are no blog posts yet." %}</p>
+  {% endif %}
+
+  {% for thread in threads.object_list %}
+    {% sphblog_showblogpost thread %}
+  {% endfor %}
+
+  {# Pagination #}
+  <p align="right">
+  {% if threads.has_previous %}
+    {% if not archive_year %}
+      <a href="{% if tag %}{% sph_url2 sphblog_show_tag_posts tag_name=tag page=threads.previous_page_number %}{% else %}{% sph_url2 sphblog_paged_index page=threads.previous_page_number %}{% endif %}">Previous</a> | 
+    {% else %}
+        {% if archive_month %}
+        <a href="{% sph_url2 sphblog_archive_month_paged page=threads.previous_page_number year=archive_year month=archive_month %}">Previous</a> | 
+        {% else %}
+        <a href="{% sph_url2 sphblog_archive_year_paged page=threads.previous_page_number year=archive_year %}">Previous</a> | 
+        {% endif %}
+    {% endif %}
+  {% endif %}
+  Page {{ threads.number }}
+  {% if threads.has_next %}
+    {% if not archive_year %}
+    | <a href="{% if tag %}{% sph_url2 sphblog_show_tag_posts tag_name=tag page=threads.next_page_number%}{% else %}{% sph_url2 sphblog_paged_index page=threads.next_page_number %}{% endif %}">Next</a>
+    {% else %}
+        {% if archive_month %}
+        | <a href="{% sph_url2 sphblog_archive_month_paged page=threads.next_page_number year=archive_year month=archive_month %}">Next</a>
+        {% else %}
+        | <a href="{% sph_url2 sphblog_archive_year_paged page=thread.next_page_number year=archive_year %}">Next</a>
+        {% endif %}
+    {% endif %}
+  {% endif %}
+  </p>
+  {# Pagination end #}
+
+  {% if all_tags %}
+    <div class="sph_all_tags">
+      <strong>{% trans "All used Tags:" %}</strong>
+      <ul>
+      {% for tag in all_tags %}
+        <li><a href="{% sph_url2 sphblog_show_tag_posts tag_name=tag.name%}">{{ tag.name }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <div class="sph_archive_list">
+    <strong>{% trans "Archive" %}</strong>
+    {% show_archive categories %}
+  </div>
+
+  <p>
+    <a href="{% sph_url2 sphblog-feeds url="latestposts" %}">{% trans "RSS Feed" %}</a>
+  </p>
+
+{% endblock %}
