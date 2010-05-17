@@ -1,0 +1,24 @@
+[
+    {
+        "pk": 1, 
+        "model": "community.group", 
+        "fields": {
+            "default_theme": null, 
+            "baseurl": "www.example.com", 
+            "name": "example", 
+            "parent": null, 
+            "longname": "Example Group"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "community.group", 
+        "fields": {
+            "default_theme": null, 
+            "baseurl": "barcampchicago.com", 
+            "name": "Barcamp", 
+            "parent": null, 
+            "longname": "Barcamp"
+        }
+    }
+]
