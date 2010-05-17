@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^wiki/', include('sphene.sphwiki.urls'), {'groupName': 'Barcamp'}),
-    url(r'^$|^(.*)/$', 'feincms.views.base.handler'),
+    url(r'^$|^(.*)/$', 'feincms.views.applicationcontent.handler'),
 )
 
 from django.conf import settings
