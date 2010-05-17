@@ -81,6 +81,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'sphene.community.context_processors.navigation',
+    'django.core.context_processors.request',
 )
 
 INSTALLED_APPS = (

@@ -1,4 +1,4 @@
-<div id="content">
+{% comment %}<div id="content">
     {% block main_content %}
     {% for content in feincms_page.content.main %}
         {{ content.render }}
@@ -12,7 +12,12 @@
         {{ content.render }}
     {% endfor %}
     {% endblock %}
-</div>
+</div>{% endcomment %}
+
+{% load feincms_tags %}
+
+{% feincms_render_region feincms_page "main" request %}
+{% feincms_render_region feincms_page "sidebar" request %}
 
 <div> Sphene stuff <br/><br/>
 {% block content %}

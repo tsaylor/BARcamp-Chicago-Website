@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^wiki/', include('sphene.sphwiki.urls'), groupdict), 
     url(r'^community/', include('sphene.community.urls'), groupdict),
-    url(r'^$|^(.*)/$', 'feincms.views.base.handler'),
+    url(r'^$|^(.*)/$', 'feincms.views.applicationcontent.handler'),
 )
 
 from django.conf import settings
