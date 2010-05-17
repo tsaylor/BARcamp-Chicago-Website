@@ -156,6 +156,7 @@ def get_current_user():
     return req.user
 
 def get_current_group():
+    return Group.objects.get(id=2)
     try:
         return _thread_locals.group
     except AttributeError, e:

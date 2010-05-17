@@ -8,6 +8,9 @@ from feincms.module.blog.models import Entry
 from feincms.content.richtext.models import RichTextContent
 from feincms.content.image.models import ImageContent
 
+from feincms.content.application.models import ApplicationContent
+from sphene.sphwiki.models import WikiSnip
+
 
 class TextilePageContent(models.Model):
     content = models.TextField()
@@ -18,12 +21,25 @@ class TextilePageContent(models.Model):
     def render(self, **kwargs):
         return textile(self.content)
 
+
+class SpheneWikiPageContent(models.Model):
+    snip = models.ForeignKey(WikiSnip)
+
+    class Meta:
+        abstract = True
+
+    def render(self, **kwargs):
+        if self.snip != None:
+            return self.snip.render()
+
+
+
 # feincms page stuff
 Page.register_extensions('datepublisher') # Example set of extensions
 
 Page.register_templates({
     'title': _('Standard template'),
-    'path': 'base.html',
+    'path': 'feincms.html',
     'regions': (
         ('main', _('Main content area')),
         ('sidebar', _('Sidebar'), 'inherited'),
@@ -41,6 +57,7 @@ Page.create_content_type(ApplicationContent, APPLICATIONS=(
     ))
 
 Page.create_content_type(TextilePageContent)
+Page.create_content_type(SpheneWikiPageContent)
 
 
 
@@ -48,7 +65,7 @@ Page.create_content_type(TextilePageContent)
 # feincms blog stuff
 Entry.register_templates({
     'title': _('Standard template'),
-    'path': 'base.html',
+    'path': 'feincms.html',
     'regions': (
         ('main', _('Main content area')),
         ),
