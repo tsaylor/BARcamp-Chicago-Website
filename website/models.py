@@ -23,7 +23,7 @@ Page.register_extensions('datepublisher', 'translations') # Example set of exten
 
 Page.register_templates({
     'title': _('Standard template'),
-    'path': 'base.html',
+    'path': 'feincms.html',
     'regions': (
         ('main', _('Main content area')),
         ('sidebar', _('Sidebar'), 'inherited'),
@@ -50,7 +50,7 @@ Entry.register_extensions('translations') # Example set of extensions
 
 Entry.register_templates({
     'title': _('Standard template'),
-    'path': 'base.html',
+    'path': 'feincms.html',
     'regions': (
         ('main', _('Main content area')),
         ),
