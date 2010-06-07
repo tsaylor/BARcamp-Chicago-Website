@@ -8,17 +8,21 @@
 
 <body>
     <div class="container">
-        <div class="span-24 last">
-            Logo
+        <div class="span-24 last" style="background-color:red;">
+            Logo<br/>
+            This is a wiki page. Have some slight border change to make it obvious that this page is of a slightly different nature.
         </div>
         <div class="span-20">
-            Main content
             {% block main_content %}
             {% feincms_render_region feincms_page "main" request %}
             {% endblock %}
         </div>
         <div class="span-4 last">
-            Sidebar
+            Sidebar</br>
+            link pics</br>
+            link pics</br>
+            link pics</br>
+            link pics</br>
             {% comment %}
             {% block sidebar_content %}
             {% feincms_render_region feincms_page "sidebar" request %}

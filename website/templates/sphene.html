@@ -1,4 +1,30 @@
-<div>
-{% block content %}
-{% endblock %}
-</div>
+
+
+
+{% load feincms_tags %}
+
+<head>
+    <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">    
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="span-24 last" style="background-color:green;">
+            Logo<br/>
+            This is a wiki page. Have some slight border change to make it obvious that this page is of a slightly different nature.
+        </div>
+        <div class="span-20">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="span-4 last">
+            Sidebar
+            link pics</br>
+            link pics</br>
+            link pics</br>
+            link pics</br>
+        </div>  
+    </div>
+</body>
