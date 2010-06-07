@@ -96,7 +96,7 @@ INSTALLED_APPS = (
     'tinymce',
 
     'feincms',
-    'feincms.module.blog',
+#    'feincms.module.blog',
     'feincms.module.page',
 
     'sphene.sphwiki',
