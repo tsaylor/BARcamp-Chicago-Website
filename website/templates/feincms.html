@@ -1,21 +1,29 @@
-{% comment %}<div id="content">
-    {% block main_content %}
-    {% for content in feincms_page.content.main %}
-        {{ content.render }}
-    {% endfor %}
-    {% endblock %}
-</div>
-
-<div id="sidebar">
-    {% block sidebar_content %}
-    {% for content in feincms_page.content.sidebar %}
-        {{ content.render }}
-    {% endfor %}
-    {% endblock %}
-</div>{% endcomment %}
-
 {% load feincms_tags %}
 
-{% feincms_render_region feincms_page "main" request %}
-{% feincms_render_region feincms_page "sidebar" request %}
+<head>
+    <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">    
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+</head>
 
+<body>
+    <div class="container">
+        <div class="span-24 last">
+            Logo
+        </div>
+        <div class="span-20">
+            Main content
+            {% block main_content %}
+            {% feincms_render_region feincms_page "main" request %}
+            {% endblock %}
+        </div>
+        <div class="span-4 last">
+            Sidebar
+            {% comment %}
+            {% block sidebar_content %}
+            {% feincms_render_region feincms_page "sidebar" request %}
+            {% endblock %}
+            {% endcomment %}
+        </div>  
+    </div>
+</body>
