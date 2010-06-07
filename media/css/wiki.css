@@ -1,0 +1,14 @@
+.wikicontentarea
+    {
+        background-color:#efe;
+        border-style:double;
+        border-width:3px;
+    }
+.wikicontenttitle
+    {
+        font-size:2em;
+        background-color:#fee;
+    }
+.wikicontentmain
+    {
+    }

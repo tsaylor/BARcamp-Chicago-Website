@@ -29,7 +29,14 @@ class SpheneWikiPageContent(models.Model):
 
     def render(self, **kwargs):
         if self.snip != None:
-            return self.snip.render()
+            return """  <div class="wikicontentarea">
+                            <div class="wikicontenttitle">%s</div>
+                            <div class="wikicontentmain">%s</div>
+                            <div class="wikicontentcontrols">
+                                [ <a href="/wiki/edit/%s/" >Edit</a> ] [ <a href="/wiki/show/%s/" >Show As Wiki Page</a> ]
+                            </div>
+                        </div>
+                    """ % (self.snip.title, self.snip.render(), self.snip.name, self.snip.name)
 
 class Entry(models.Model):
    published_date = models.DateField()
