@@ -1,4 +1,45 @@
-<div>
-{% block content %}
-{% endblock %}
-</div>
+{% load feincms_tags %}
+
+<head>
+    <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">    
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+</head>
+<body>
+    <div class="container">
+        {% if feincms_page %}
+            <div class="span-24 last" style="background-color:red;">
+        {% else %}
+            <div class="span-24 last" style="background-color:green;">
+        {% endif %}
+            Logo<br/>
+            This is a wiki page. Have some slight border change to make it obvious that this page is of a slightly different nature.
+        </div>
+        <div class="span-20">
+            {% if feincms_page %} {% comment %} If this is a feincms view vs a wiki view {% endcomment %}
+
+                {% block main_content %}
+                {% feincms_render_region feincms_page "main" request %}
+                {% endblock %}
+
+            {% else %}
+
+                {% block content %}
+                {% endblock %}
+
+            {% endif %}
+        </div>
+        <div class="span-4 last">
+            Sidebar</br>
+            link pics</br>
+            link pics</br>
+            link pics</br>
+            link pics</br>
+            {% comment %}
+            {% block sidebar_content %}
+            {% feincms_render_region feincms_page "sidebar" request %}
+            {% endblock %}
+            {% endcomment %}
+        </div>  
+    </div>
+</body>

@@ -54,7 +54,7 @@ Page.register_extensions('datepublisher') # Example set of extensions
 
 Page.register_templates({
     'title': _('Standard template'),
-    'path': 'feincms.html',
+    'path': 'base.html',
     'regions': (
         ('main', _('Main content area')),
         ('sidebar', _('Sidebar'), 'inherited'),
