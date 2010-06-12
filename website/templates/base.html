@@ -16,8 +16,7 @@
         {% else %}
             <div class="span-24 last" style="background-color:green;">
         {% endif %}
-            Logo<br/>
-            This is a wiki page. Have some slight border change to make it obvious that this page is of a slightly different nature.
+            <a href='/'><img src='/media/siteimages/logo.jpg'/></a>
         </div>
         <div class="span-14">
             {% if feincms_page %} {% comment %} If this is a feincms view vs a wiki view {% endcomment %}
@@ -28,15 +27,19 @@
 
             {% else %}
 
+                <h1>WIKI</h1>
+
                 {% block content %}
                 {% endblock %}
 
             {% endif %}
         </div>
         <div class="span-10 last">
-            {% block sidebar_content %}
-            {% feincms_render_region feincms_page "sidebar" request %}
-            {% endblock %}
+            {% if feincms_page %}
+                {% block sidebar_content %}
+                {% feincms_render_region feincms_page "sidebar" request %}
+                {% endblock %}
+            {% endif %}
         </div>  
     </div>
 </body>

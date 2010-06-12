@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.views.generic.simple import redirect_to
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^wiki/', include('sphene.sphwiki.urls'), groupdict), 
     url(r'^community/', include('sphene.community.urls'), groupdict),
+    url(r'^$', redirect_to, {'url': '/home/'}),
     url(r'^$|^(.*)/$', 'feincms.views.applicationcontent.handler'),
 )
 
