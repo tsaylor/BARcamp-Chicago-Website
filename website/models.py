@@ -38,6 +38,25 @@ class SpheneWikiPageContent(models.Model):
                         </div>
                     """ % (self.snip.title, self.snip.render(), self.snip.name, self.snip.name)
 
+LINKS_CHOICES = (
+    ('H', 'home'),
+    ('S', 'schedule'),
+    ('W', 'wiki')
+    )
+
+class SidebarLinksContent(models.Model):
+    selected_button = models.CharField(max_length=1, choices=LINKS_CHOICES)
+
+    class Meta:
+        abstract = True
+
+    def render(self, **kwargs):
+        linkHtml = lambda (initial, name) : '<div class="sidebarlink"><a href="/%s"><img src="/media/siteimages/button_%s%s.png"/></a></div>' % (
+            name, name, {True: "_sel", False: ""}[initial == self.selected_button])
+
+        return "\n".join( map( linkHtml, LINKS_CHOICES))
+
+
 class Entry(models.Model):
    published_date = models.DateField()
    title = models.CharField(max_length=200)
@@ -80,8 +99,7 @@ Page.create_content_type(app_models.ApplicationContent, APPLICATIONS=(
 
 Page.create_content_type(TextilePageContent)
 Page.create_content_type(SpheneWikiPageContent)
-
-
+Page.create_content_type(SidebarLinksContent)
 
 
 # feincms blog stuff
