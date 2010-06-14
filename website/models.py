@@ -10,6 +10,7 @@ from feincms.content.image.models import ImageContent
 
 from sphene.sphwiki.models import WikiSnip
 
+import re
 
 class TextilePageContent(models.Model):
     content = models.TextField()
@@ -56,6 +57,26 @@ class SidebarLinksContent(models.Model):
 
         return "\n".join( map( linkHtml, LINKS_CHOICES))
 
+class YoutubeContent(models.Model):
+    youtube_id = models.CharField(max_length=40, default="")
+
+    class Meta:
+        abstract = True
+
+    def render(self, **kwargs):
+        if self.youtube_id != "": 
+            return """
+                <object width="425" height="344">
+                    <param name="movie" value="http://youtube.com/v/%s&amp;hl=en&amp;fs=1">
+                    </param>
+                    <param name="allowFullScreen" value="true">
+                    </param>
+                    <embed src="http://youtube.com/v/%s&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344">
+                    </embed>
+                </object>
+                """ % (self.youtube_id, self.youtube_id)
+        else:
+            return ""
 
 class Entry(models.Model):
    published_date = models.DateField()
@@ -100,6 +121,7 @@ Page.create_content_type(app_models.ApplicationContent, APPLICATIONS=(
 Page.create_content_type(TextilePageContent)
 Page.create_content_type(SpheneWikiPageContent)
 Page.create_content_type(SidebarLinksContent)
+Page.create_content_type(YoutubeContent)
 
 
 # feincms blog stuff
