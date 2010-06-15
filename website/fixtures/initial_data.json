@@ -1,6 +1,293 @@
 [
     {
+        "pk": 1, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Home", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 1, 
+            "active": true, 
+            "publication_date": "2010-06-14 18:23:26", 
+            "in_navigation": true, 
+            "_cached_url": "/home/", 
+            "slug": "home"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "What", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 3, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:04:16", 
+            "in_navigation": true, 
+            "_cached_url": "/what/", 
+            "slug": "what"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Who will be there", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 4, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:04:44", 
+            "in_navigation": true, 
+            "_cached_url": "/who/", 
+            "slug": "who"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Where & When", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 5, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:05:08", 
+            "in_navigation": true, 
+            "_cached_url": "/where/", 
+            "slug": "where"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Agenda", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 6, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:05:32", 
+            "in_navigation": true, 
+            "_cached_url": "/agenda/", 
+            "slug": "agenda"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Help Out", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 7, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:05:56", 
+            "in_navigation": true, 
+            "_cached_url": "/helpout/", 
+            "slug": "helpout"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Community", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 8, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:06:10", 
+            "in_navigation": true, 
+            "_cached_url": "/community/", 
+            "slug": "community"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>MAIN CONTENT!!!!!</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>signup list</p>", 
+            "region": "main", 
+            "parent": 1
+        }
+    }, 
+    {
         "pk": 2, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>Barcamp is awesome</p>", 
+            "region": "main", 
+            "parent": 3
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>YOU!</p>", 
+            "region": "main", 
+            "parent": 4
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>The old EA building, august 21/22</p>", 
+            "region": "main", 
+            "parent": 5
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>a bunch of talks</p>", 
+            "region": "main", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>Bring these things:</p>", 
+            "region": "main", 
+            "parent": 7
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>Bringing the community together Barack Obama change hope</p>", 
+            "region": "main", 
+            "parent": 8
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "H", 
+            "region": "sidebar", 
+            "parent": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "T", 
+            "region": "sidebar", 
+            "parent": 3
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "O", 
+            "region": "sidebar", 
+            "parent": 4
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "E", 
+            "region": "sidebar", 
+            "parent": 5
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "A", 
+            "region": "sidebar", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "P", 
+            "region": "sidebar", 
+            "parent": 7
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "C", 
+            "region": "sidebar", 
+            "parent": 8
+        }
+    }, 
+    {
+        "pk": 1, 
         "model": "auth.user", 
         "fields": {
             "username": "tsaylor", 
@@ -9,7 +296,7 @@
             "is_active": true, 
             "is_superuser": true, 
             "is_staff": true, 
-            "last_login": "2010-05-16 21:53:34", 
+            "last_login": "2010-06-15 09:23:56", 
             "groups": [], 
             "user_permissions": [], 
             "password": "sha1$6793b$5843adc349c21bf76eb24917e603d5c97b49997d", 

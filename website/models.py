@@ -41,8 +41,13 @@ class SpheneWikiPageContent(models.Model):
 
 LINKS_CHOICES = (
     ('H', 'home'),
-    ('S', 'schedule'),
-    ('W', 'wiki')
+    ('W', 'wiki'),
+    ('T', 'what'),
+    ('O', 'who'),
+    ('E', 'where'),
+    ('A', 'agenda'),
+    ('P', 'helpout'),
+    ('C', 'community'),
     )
 
 class SidebarLinksContent(models.Model):
