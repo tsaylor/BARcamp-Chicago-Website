@@ -50,6 +50,13 @@ LINKS_CHOICES = (
     ('C', 'community'),
     )
 
+def rendersidebar(page):
+    linkHtml = lambda (initial, name) : '<div class="sidebarlink"><a href="/%s"><img src="/media/siteimages/button_%s%s.png"/></a></div>' % (
+        name, name, {True: "_sel", False: ""}[initial == page])
+
+    return "\n".join( map( linkHtml, LINKS_CHOICES))
+   
+
 class SidebarLinksContent(models.Model):
     selected_button = models.CharField(max_length=1, choices=LINKS_CHOICES)
 
@@ -57,10 +64,7 @@ class SidebarLinksContent(models.Model):
         abstract = True
 
     def render(self, **kwargs):
-        linkHtml = lambda (initial, name) : '<div class="sidebarlink"><a href="/%s"><img src="/media/siteimages/button_%s%s.png"/></a></div>' % (
-            name, name, {True: "_sel", False: ""}[initial == self.selected_button])
-
-        return "\n".join( map( linkHtml, LINKS_CHOICES))
+        return rendersidebar(self.selected_button)
 
 class YoutubeContent(models.Model):
     youtube_id = models.CharField(max_length=40, default="")

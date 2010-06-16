@@ -23,6 +23,8 @@ from sphene.community.models import Tag, TagLabel, TaggedItem, tag_set_labels, t
 from sphene.community.fields import TagField
 from sphene.community.widgets import TagWidget
 
+from website.models import rendersidebar
+
 import os
 
 # Create your views here.
@@ -70,6 +72,7 @@ def showSnip(request, group, snipName):
                                     'snipName' : snipName,
                                     'snip_rendered_body': snip_rendered_body,
                                     'redirects': redirects,
+                                    'wiki_sidebar_html': rendersidebar('W'),
                                     'commentstemplate': 'sphene.sphcomments' in settings.INSTALLED_APPS and 'sphene/sphwiki/wikicomments.html' or 'sphene/sphwiki/wikicomments_unavailable.html',
                                     },
                                   context_instance = RequestContext(request) )

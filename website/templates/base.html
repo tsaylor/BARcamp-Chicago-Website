@@ -35,6 +35,8 @@
                 {% block sidebar_content %}
                 {% feincms_render_region feincms_page "sidebar" request %}
                 {% endblock %}
+            {% else %}
+                {{ wiki_sidebar_html|safe }}
             {% endif %}
         </div>  
     </div>
