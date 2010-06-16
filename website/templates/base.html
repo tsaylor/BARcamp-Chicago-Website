@@ -12,15 +12,13 @@
 <body>
     <div class="container">
         {% if feincms_page %}
-            <div class="span-23" style="background-color:red; padding-right:19px;">
+            <div class="span-24 last" style="background-color:red; padding-right:19px;">
         {% else %}
-            <div class="span-23" style="background-color:green;">
+            <div class="span-24 last" style="background-color:green;">
         {% endif %}
             <a href='/'><img src='/media/siteimages/logo.jpg'/></a>
         </div>
-        <div class="span-1">
-        </div>
-        <div class="span-14">
+        <div class="span-20">
             {% if feincms_page %} {% comment %} If this is a feincms view vs a wiki view {% endcomment %}
 
                 {% block main_content %}
@@ -36,7 +34,7 @@
 
             {% endif %}
         </div>
-        <div class="span-10 last" style="text-align: right;">
+        <div class="span-4 last" style="text-align: right;">
             {% if feincms_page %}
                 {% block sidebar_content %}
                 {% feincms_render_region feincms_page "sidebar" request %}

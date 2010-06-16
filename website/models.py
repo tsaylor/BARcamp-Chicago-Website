@@ -66,14 +66,14 @@ class YoutubeContent(models.Model):
     def render(self, **kwargs):
         if self.youtube_id != "": 
             return """
-                <div style="float: left; display: inline;"><object width="425" height="344">
+                <object style="display:inline;" width="425" height="344">
                     <param name="movie" value="http://youtube.com/v/%s&amp;hl=en&amp;fs=1">
                     </param>
                     <param name="allowFullScreen" value="true">
                     </param>
-                    <embed src="http://youtube.com/v/%s&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344">
+                    <embed style="display:inline;" src="http://youtube.com/v/%s&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344">
                     </embed>
-                </object></div>
+                </object>
                 """ % (self.youtube_id, self.youtube_id)
         else:
             return ""
