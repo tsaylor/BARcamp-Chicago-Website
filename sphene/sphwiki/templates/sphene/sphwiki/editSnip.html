@@ -20,6 +20,7 @@
   {% if version %}
     <div class="sphwiki_versionwarning"><strong>{% trans "Warning" %}:</strong> {% blocktrans with version.editor|sph_html_user as version_editor and version.edited|sph_date as version_editdate %}You are editing an old version: By {{ version_editor }} at {{ version_editdate }}{% endblocktrans %}</div>
   {% endif %}
+  <center><span style="background-color:gold;"><b>This wiki uses <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a> formatting.</b></span></center>
   <form action="." method="post" name="snipedit" class="sphform">
     <table class="form">
       {{ form }}
