@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">    
     <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="/media/css/custom.css" type="text/css" media="screen, projection">
 
 
     <link rel="stylesheet" href="/media/css/wiki.css" type="text/css" media="screen">
@@ -14,7 +15,7 @@
         <div class="span-24 last">
             <a href='/'><img src='/media/siteimages/logo.jpg'/></a>
         </div>
-        <div class="span-20">
+        <div class="span-19 main-content">
             {% if feincms_page %} {% comment %} If this is a feincms view vs a wiki view {% endcomment %}
 
                 {% block main_content %}
@@ -30,14 +31,16 @@
 
             {% endif %}
         </div>
-        <div class="span-4 last" style="text-align: right;">
-            {% if feincms_page %}
-                {% block sidebar_content %}
-                {% feincms_render_region feincms_page "sidebar" request %}
-                {% endblock %}
-            {% else %}
-                {{ wiki_sidebar_html|safe }}
-            {% endif %}
+        <div class="span-5 last" style="text-align: right;">
+            <div class="navbar">
+                {% if feincms_page %}
+                    {% block sidebar_content %}
+                    {% feincms_render_region feincms_page "sidebar" request %}
+                    {% endblock %}
+                {% else %}
+                    {{ wiki_sidebar_html|safe }}
+                {% endif %}
+            </div>
         </div>  
     </div>
 </body>
