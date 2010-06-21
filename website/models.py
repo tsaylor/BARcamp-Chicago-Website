@@ -75,12 +75,12 @@ class YoutubeContent(models.Model):
     def render(self, **kwargs):
         if self.youtube_id != "": 
             return """
-                <object style="display:inline;" width="425" height="344">
+                <object style="display:inline;" width="412" height="333">
                     <param name="movie" value="http://youtube.com/v/%s&amp;hl=en&amp;fs=1">
                     </param>
                     <param name="allowFullScreen" value="true">
                     </param>
-                    <embed style="display:inline;" src="http://youtube.com/v/%s&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344">
+                    <embed style="display:inline;" src="http://youtube.com/v/%s&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="412" height="333">
                     </embed>
                 </object>
                 """ % (self.youtube_id, self.youtube_id)
@@ -93,7 +93,7 @@ class MapContent(models.Model):
 
     def render(self, **kwargs):
         return """
-            <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=215+West+Ohio+Street,+Chicago,+IL&amp;sll=41.89378,-87.638283&amp;sspn=0.014791,0.038409&amp;ie=UTF8&amp;hq=&amp;hnear=215+W+Ohio+St,+Chicago,+Cook,+Illinois+60654&amp;ll=41.893141,-87.637081&amp;spn=0.022362,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=215+West+Ohio+Street,+Chicago,+IL&amp;sll=41.89378,-87.638283&amp;sspn=0.014791,0.038409&amp;ie=UTF8&amp;hq=&amp;hnear=215+W+Ohio+St,+Chicago,+Cook,+Illinois+60654&amp;ll=41.893141,-87.637081&amp;spn=0.022362,0.036478&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+            <iframe width="412" height="339" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=215+West+Ohio+Street,+Chicago,+IL&amp;sll=41.89378,-87.638283&amp;sspn=0.014791,0.038409&amp;ie=UTF8&amp;hq=&amp;hnear=215+W+Ohio+St,+Chicago,+Cook,+Illinois+60654&amp;ll=41.893141,-87.637081&amp;spn=0.022362,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=215+West+Ohio+Street,+Chicago,+IL&amp;sll=41.89378,-87.638283&amp;sspn=0.014791,0.038409&amp;ie=UTF8&amp;hq=&amp;hnear=215+W+Ohio+St,+Chicago,+Cook,+Illinois+60654&amp;ll=41.893141,-87.637081&amp;spn=0.022362,0.036478&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
         """
 
 class Entry(models.Model):
