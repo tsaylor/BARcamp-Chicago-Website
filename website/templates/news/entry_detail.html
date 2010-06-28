@@ -2,5 +2,5 @@
    <h2>{{ object.title }}</h2>
    <span class="date">{{ object.published_date|date:"d.m.Y" }}</span>
 
-   {{ object.description|linebreaks }}
+   {{ object.description|safe|linebreaks }}
 </div>

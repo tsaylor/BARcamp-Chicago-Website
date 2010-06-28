@@ -1,6 +1,8 @@
+<h2>News</h2>
 {% for entry in object_list %}
     <div class="entry">
-        <div class="date">{{ entry.published_date|date:"d.m.Y" }}</div>
-        <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+        <span class="news-title"><!--a href="{{ entry.get_absolute_url }}"-->{{ entry.title }}<!--/a--></span>
+        <span class="date"> - {{ entry.published_date|date:"d.m.Y" }}</span>
+        {{ entry.description|safe }}
     </div>
 {% endfor %}

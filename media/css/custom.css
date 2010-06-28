@@ -19,3 +19,11 @@ body {
 .horiz-rule {
     border-bottom: 1px solid #9a9a9a;
 }
+
+.news-title {
+    font-size: 1.5em;
+}
+
+.date {
+    font-size: .75em;
+}
