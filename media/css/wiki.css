@@ -1,13 +1,11 @@
 .wikicontentarea
     {
-        background-color:#efe;
-        border-style:double;
-        border-width:3px;
+        background-color:#dfd;
+        margin:10px;
     }
 .wikicontenttitle
     {
         font-size:2em;
-        background-color:#fee;
     }
 .wikicontentmain
     {
