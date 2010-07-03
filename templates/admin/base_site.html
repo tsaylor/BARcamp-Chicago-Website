@@ -1,0 +1,12 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% block extrastyle %}
+<style type='text/css' src='{{MEDIA_URL}}feincms/jquery-1.3.2.min.js'></style>
+{% endblock %}
+{% block title %}{{ title }} | {% trans 'BARCamp site admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'BARCamp Site Admin' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

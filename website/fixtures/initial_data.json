@@ -1,6 +1,742 @@
 [
     {
+        "pk": 1, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Home", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 1, 
+            "active": true, 
+            "publication_date": "2010-06-14 18:23:26", 
+            "in_navigation": true, 
+            "_cached_url": "/home/", 
+            "slug": "home"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "What", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 3, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:04:16", 
+            "in_navigation": true, 
+            "_cached_url": "/what/", 
+            "slug": "what"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Who will be there", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 4, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:04:44", 
+            "in_navigation": true, 
+            "_cached_url": "/who/", 
+            "slug": "who"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Where & When", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 5, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:05:08", 
+            "in_navigation": true, 
+            "_cached_url": "/where/", 
+            "slug": "where"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Agenda", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 6, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:05:32", 
+            "in_navigation": true, 
+            "_cached_url": "/agenda/", 
+            "slug": "agenda"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Help Out", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 7, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:05:56", 
+            "in_navigation": true, 
+            "_cached_url": "/helpout/", 
+            "slug": "helpout"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "page.page", 
+        "fields": {
+            "rght": 2, 
+            "level": 0, 
+            "parent": null, 
+            "title": "Community", 
+            "redirect_to": "", 
+            "override_url": "", 
+            "lft": 1, 
+            "publication_end_date": null, 
+            "template_key": "base.html", 
+            "tree_id": 8, 
+            "active": true, 
+            "publication_date": "2010-06-14 19:06:10", 
+            "in_navigation": true, 
+            "_cached_url": "/community/", 
+            "slug": "community"
+        }
+    }, 
+    {
         "pk": 2, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<h1 id=\"firstHeading\" class=\"firstHeading\">What</h1>\r\n<p>\"A BARcamp is an ad-hoc gathering born from the desire for people to share and learn in an open environment. It is an intense event with discussions, demos, and interaction from participants. The name BARcamp was inspired as a complement to FOOcamp, a private tech gathering run by Tim OReilly.\" - BARcamp.org</p>\r\n<p><a id=\"Collaboration_is_a_.22Good_Thing.22\" name=\"Collaboration_is_a_.22Good_Thing.22\"></a></p>\r\n<h1><span class=\"editsection\"></span><span class=\"mw-headline\"> Collaboration is a \"Good Thing\" </span></h1>\r\n<p>It ain't just for bookmarking sites! Open source hackers, entrepreneurs, tech students, business folk and others need to share ideas and expand their minds. Meeting people, learning about what others are doing and getting feedback on what you are doing is essential.</p>\r\n<p>Innovation is where it's at and Chicago has a great deal of engineering smarts and capabilities. What we lack, that the Bay Area, Boston, Boulder and most other tech centers have, is the uninhibited free-flow of ideas and communication. We lack a supportive culture that encourages ideas and failure as a part of success.</p>\r\n<p>So in addition to the more abstract notion, here are a few things worth considering:</p>\r\n<ul>\r\n<li> It's good to meet people outside your comfort zone; this is essential for business and for creating things that are used by others </li>\r\n<li> It's a good way to meet high-quality developers and engineers that you won't find on Monster or Dice </li>\r\n<li> It's a good way to get help on a project you're working on, and sometimes the help may just be the encouragement that other people need to see it as a great idea </li>\r\n<li> It's a good place to vet ideas or refine fuzzy concepts </li>\r\n<li> Most important, there will be <strong>free beer</strong> </li>\r\n</ul>\r\n<p><a id=\"Blogs_Photos_Videos\" name=\"Blogs_Photos_Videos\"></a></p>\r\n<h1><span class=\"editsection\"></span><span class=\"mw-headline\"> Blogs Photos Videos </span></h1>\r\n<p>Videos capture the essence of BARcamp.  Take a look these video summaries from BARcamp San Francisco and BARcamp Los Angeles:</p>", 
+            "region": "main", 
+            "parent": 3
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>If you know you are attending BARcamp Chicago 2010, please add your name to the Will Attend list below.  If you only think you are attending, we got a list for you too.</p>\r\n<p>If you are planning to give a talk or workshop, be sure to add your talk or workshop to the <a title=\"Agenda\" href=\"/agenda\">Agenda</a>.</p>\r\n<p>Here are some things you should bring with you:</p>\r\n<ul>\r\n<li> Yourself </li>\r\n<li> Creativity, curiosity, smarts and some drive </li>\r\n<li> Your laptop (and power cord) </li>\r\n<li> 802.11 capability (we might be able to accommodate long cat5 cables) </li>\r\n<li> Your own mug for coffee/tea </li>\r\n<li> A folding chair or cushion to sit on </li>\r\n<li> A sleeping bag and pillow if you plan on crashing </li>\r\n<li> A food dish with serving utensil if you feel like it </li>\r\n<li> Any specialty liquor or beverage desired </li>\r\n</ul>", 
+            "region": "main", 
+            "parent": 4
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<h1><span class=\"mw-headline\"> When </span></h1>\r\n<p>August, 21st and 22nd, 2010<br /> 10 AM Saturday to 8 PM Sunday<br /> (Open All Night!)</p>\r\n<p>If you are from out of town or just don't want to go home, feel free to sleep there overnight.</p>\r\n<h1><span class=\"mw-headline\"> Where </span></h1>\r\n<p>215 W Ohio St<br /> Chicago, IL 60654</p>", 
+            "region": "main", 
+            "parent": 5
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<h1 id=\"firstHeading\" class=\"firstHeading\">Agenda</h1>\r\n<p>This is the agenda for BARcamp Chicago 2010.  Feel free to add your own events and workshops to the agenda.</p>\r\n<p>You can pretty much talk about anything. But keep in mind, if your talk or workshop is more focused on marketing (rather than implementation details), then you will more than likely have a very small audience. Make sure to keep your talk or workshop interesting and fun!</p>\r\n<p>Time blocks are not exclusive as we have plenty of space for multiple attendees to host talks/workshops at the same time. Also feel free to give a talk late Saturday night/Sunday morning.</p>", 
+            "region": "main", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>If you are interesting in helping out with BARcamp Chicago 2010, there are several ways to do so.</p>\r\n<p>BARcamp is a free event run by a group volunteers. We are seeking no tangible profit from our efforts. We are running this event solely to foster collaboration and creatively among the Chicago's tech community.</p>\r\n<h1><span class=\"mw-headline\"> Help with Planning </span></h1>\r\n<p>If you are interested in helping us plan BARcamp Chicago 2010, please join our <a class=\"text external\" title=\"https://www.chicagolug.org/lists/listinfo/barcampchicago-planning\" rel=\"nofollow\" href=\"https://www.chicagolug.org/lists/listinfo/barcampchicago-planning\">mailing list</a> and attend our planning meetings.  We usually meet at the <a class=\"text external\" title=\"http://maps.google.com/maps?oe=utf-8&amp;client=firefox-a&amp;ie=UTF8&amp;q=742+N.+Clark+St.+++++Chicago,+IL+60610&amp;fb=1&amp;gl=us&amp;hnear=&amp;cid=0,0,9505511027837878991&amp;ei=cM8BTPSyDY7kNcP8pDs&amp;ved=0CBcQnwIwAA&amp;hq=742+N.+Clark+St.+++++Chicago,+IL+60610&amp;ll=41.896192,-87.631609&amp;spn=0.009376,0.022724&amp;z=16&amp;iwloc=A\" rel=\"nofollow\" href=\"http://maps.google.com/maps?oe=utf-8&amp;client=firefox-a&amp;ie=UTF8&amp;q=742+N.+Clark+St.+++++Chicago,+IL+60610&amp;fb=1&amp;gl=us&amp;hnear=&amp;cid=0,0,9505511027837878991&amp;ei=cM8BTPSyDY7kNcP8pDs&amp;ved=0CBcQnwIwAA&amp;hq=742+N.+Clark+St.+++++Chicago,+IL+60610&amp;ll=41.896192,-87.631609&amp;spn=0.009376,0.022724&amp;z=16&amp;iwloc=A\">Clark Street Ale House</a> in River North Chicago.  Concrete information about the next planning meeting will be announced on the mailing list.</p>\r\n<p><a id=\"Monetary_Sponsorship\" name=\"Monetary_Sponsorship\"></a></p>\r\n<h1><span class=\"editsection\">&nbsp;</span><span class=\"mw-headline\"> Monetary Sponsorship </span></h1>\r\n<p>If you help with a monetary sponsorship, we'll put your company logo on the website's front page and a description of your company on the <a title=\"Sponsors\" href=\"http://bcwiki.timsaylor.com/index.php/Sponsors\">Sponsors</a> page. We will also list your company as a sponsor at the event. If you or your organization is interested in making a monetary contribution to BARcamp Chicago, please contact BARcamp Chicago's lead organizer, <a class=\"text external\" title=\"mailto:special.kevin@gmail.com\" rel=\"nofollow\" href=\"mailto:special.kevin@gmail.com\">Kevin Harriss</a>.</p>\r\n<p><a id=\"Equipment_or_Food_Donation\" name=\"Equipment_or_Food_Donation\"></a></p>\r\n<h1><span class=\"editsection\">&nbsp;</span><span class=\"mw-headline\"> Equipment or Food Donation </span></h1>\r\n<p>Interested in making a donation, please contact BARcamp Chicago's lead organizer, <a class=\"text external\" title=\"mailto:special.kevin@gmail.com\" rel=\"nofollow\" href=\"mailto:special.kevin@gmail.com\">Kevin Harriss</a>.  Kevin will most likely put you in contact with another organizer who will be able to give you more personal attention.</p>\r\n<p>Here are some items that are needed:</p>\r\n<ul>\r\n<li> Projectors for presentations </li>\r\n<li> Lots of folding chairs </li>\r\n<li> Beer and specialty alcohol </li>\r\n<li> Food for about 200 people </li>\r\n<li> Kiddie pool for the kegs </li>\r\n<li> Ice for the beer </li>\r\n<li> Food and Garbage Supplies </li>\r\n<li> A PA system for announcements </li>\r\n</ul>\r\n<p>If you help with a donation, we'll put your company logo on the website's front page and a description of your company on the <a title=\"Sponsors\" href=\"http://bcwiki.timsaylor.com/index.php/Sponsors\">Sponsors</a> page.  We will also list your company as a sponsor at the event.</p>\r\n<p><a id=\"Host_a_Talk_or_Workshop\" name=\"Host_a_Talk_or_Workshop\"></a></p>\r\n<h1><span class=\"editsection\">&nbsp;</span><span class=\"mw-headline\"> Host a Talk or Workshop </span></h1>\r\n<p>All you have to do is list your talk or workshop on the <a title=\"Agenda\" href=\"http://bcwiki.timsaylor.com/index.php/Agenda\">Agenda</a>.  (Oh, you also have to show up and actually give the talk or workshop.)</p>", 
+            "region": "main", 
+            "parent": 7
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 0, 
+            "text": "<p>Bringing the community together Barack Obama change hope</p>", 
+            "region": "main", 
+            "parent": 8
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 1, 
+            "text": "<h2><span class=\"editsection\">&nbsp;</span><span class=\"mw-headline\"> When </span></h2>\r\n<p>August, 21st and 22nd, 2010<br /> 10 AM Saturday to 8 PM Sunday<br /> (Open All Night!)</p>\r\n<p><a id=\"Where\" name=\"Where\"></a></p>\r\n<h2><span class=\"editsection\">&nbsp;</span><span class=\"mw-headline\"> Where </span></h2>\r\n<p>215 W Ohio St<br /> Chicago, IL 60654</p>\r\n<p><a id=\"What\" name=\"What\"></a></p>\r\n<h2><span class=\"editsection\">&nbsp;</span><span class=\"mw-headline\"> What </span></h2>\r\n<p>\"A BARcamp is an ad-hoc gathering born from the desire for people to share and learn in an open environment. It is an intense event with discussions, demos, and interaction from participants. The name BARcamp was inspired as a complement to FOOcamp, a private tech gathering run by Tim OReilly.\"<br /> - BARcamp.org</p>\r\n<p><a id=\"Blogs_Photos_Videos\" name=\"Blogs_Photos_Videos\"></a></p>", 
+            "region": "main", 
+            "parent": 1
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "page.richtextcontent", 
+        "fields": {
+            "ordering": 2, 
+            "text": "<h1><span class=\"mw-headline\">Blogs Photos Videos </span></h1>\r\n<p>Videos capture the essence of BARcamp.  Take a look these video summaries from BARcamp San Francisco and BARcamp Los Angeles:</p>", 
+            "region": "main", 
+            "parent": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.applicationcontent", 
+        "fields": {
+            "ordering": 0, 
+            "region": "main", 
+            "parent": 1, 
+            "parameters": "", 
+            "urlconf_path": "website.entry_urls"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.sphenewikipagecontent", 
+        "fields": {
+            "snip": 1, 
+            "ordering": 1, 
+            "region": "main", 
+            "parent": 4
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.sphenewikipagecontent", 
+        "fields": {
+            "snip": 3, 
+            "ordering": 1, 
+            "region": "main", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "page.sphenewikipagecontent", 
+        "fields": {
+            "snip": 2, 
+            "ordering": 2, 
+            "region": "main", 
+            "parent": 4
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.sphenewikipagecontent", 
+        "fields": {
+            "snip": 4, 
+            "ordering": 2, 
+            "region": "main", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.sphenewikipagecontent", 
+        "fields": {
+            "snip": 5, 
+            "ordering": 3, 
+            "region": "main", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "H", 
+            "region": "sidebar", 
+            "parent": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "T", 
+            "region": "sidebar", 
+            "parent": 3
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "O", 
+            "region": "sidebar", 
+            "parent": 4
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "E", 
+            "region": "sidebar", 
+            "parent": 5
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "A", 
+            "region": "sidebar", 
+            "parent": 6
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "P", 
+            "region": "sidebar", 
+            "parent": 7
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "page.sidebarlinkscontent", 
+        "fields": {
+            "ordering": 0, 
+            "selected_button": "C", 
+            "region": "sidebar", 
+            "parent": 8
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "page.youtubecontent", 
+        "fields": {
+            "ordering": 1, 
+            "region": "main", 
+            "parent": 3, 
+            "youtube_id": "pRtHeBnTdGw"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "page.youtubecontent", 
+        "fields": {
+            "ordering": 2, 
+            "region": "main", 
+            "parent": 3, 
+            "youtube_id": "0pcBvi8tGVo"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.youtubecontent", 
+        "fields": {
+            "ordering": 3, 
+            "region": "main", 
+            "parent": 1, 
+            "youtube_id": "pRtHeBnTdGw"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "page.youtubecontent", 
+        "fields": {
+            "ordering": 4, 
+            "region": "main", 
+            "parent": 1, 
+            "youtube_id": "0pcBvi8tGVo"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "page.mapcontent", 
+        "fields": {
+            "ordering": 1, 
+            "region": "main", 
+            "parent": 5
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sphwiki.wikisnip", 
+        "fields": {
+            "body": "[Evil Joel](http://www.facebook.com/eviljoel \"EJ's Facebook\")\r\n", 
+            "changed": "2010-06-16 21:06:23", 
+            "group": 2, 
+            "name": "WillAttend", 
+            "created": "2010-06-16 21:06:23", 
+            "creator": 2, 
+            "editor": 2, 
+            "title": "Will Attend"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "sphwiki.wikisnip", 
+        "fields": {
+            "body": "(none so far)", 
+            "changed": "2010-06-16 21:08:17", 
+            "group": 2, 
+            "name": "WillProbablyAttend", 
+            "created": "2010-06-16 21:08:17", 
+            "creator": 2, 
+            "editor": 2, 
+            "title": "Will Probably Attend, But Not if I Sleep In on Saturday/Sunday "
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "sphwiki.wikisnip", 
+        "fields": {
+            "body": "**10:00 AM** - Doors Open\r\n\r\n**11:00 AM** - Welcome to BARcamp Chicago (Kevin Harriss)\r\n\r\n**12:00 PM**\r\n\r\n**1:00 PM**\r\n\r\n**2;00 PM**\r\n\r\n**3:00 PM**\r\n\r\n**4:00 PM**\r\n\r\n**5:00 PM**\r\n\r\n**6:00 PM**\r\n\r\n**7:00 PM**\r\n\r\n**8:00 PM** - Drunken Panel Discussion (Panel members TBA)\r\n\r\n**9:00 PM** - Techy Movies (All night!)\r\n\r\n*(Feel free to add your own late night time blocks!)*", 
+            "changed": "2010-06-16 21:42:26", 
+            "group": 2, 
+            "name": "SaturdaysAgenda", 
+            "created": "2010-06-16 21:42:06", 
+            "creator": 2, 
+            "editor": 2, 
+            "title": "Saturday's Agenda"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "sphwiki.wikisnip", 
+        "fields": {
+            "body": "*(Feel free to add your own early morning time blocks!)*\r\n\r\n**9:00 AM**\r\n\r\n**10:00 AM**\r\n\r\n**11:00 AM**\r\n\r\n**12:00 PM**\r\n\r\n**1:00 PM**\r\n\r\n**2:00 PM**\r\n\r\n**3:00 PM**\r\n\r\n**4:00 PM**\r\n\r\n**5:00 PM** - BARcamp Chicago 2010 Wrap-up Talk (Kevin Harriss) ", 
+            "changed": "2010-06-16 21:43:57", 
+            "group": 2, 
+            "name": "SundaysAgenda", 
+            "created": "2010-06-16 21:43:57", 
+            "creator": 2, 
+            "editor": 2, 
+            "title": "Sunday's Agenda"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "sphwiki.wikisnip", 
+        "fields": {
+            "body": "BARcompany", 
+            "changed": "2010-06-16 21:44:21", 
+            "group": 2, 
+            "name": "AllDayEvents", 
+            "created": "2010-06-16 21:44:21", 
+            "creator": 2, 
+            "editor": 2, 
+            "title": "All Day Events"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "sphwiki.wikisnip", 
+        "fields": {
+            "body": "Here's the Wiki. Feel free to create any page by changing the name of the wiki page in the url from \"Start\" to your desired name. This will serve for any general BARcamp ad-hoc planning, and also for a workspace for any projects you wish to coordinate.\r\n\r\nAlso note that certain special wiki pages, such as signup lists, are embedded elsewhere in the site.", 
+            "changed": "2010-06-16 21:49:28", 
+            "group": 2, 
+            "name": "Start", 
+            "created": "2010-06-16 21:49:28", 
+            "creator": 2, 
+            "editor": 2, 
+            "title": ""
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "[Evil Joel](http://www.facebook.com/eviljoel \"EJ's Facebook\")\r\n", 
+            "edited": "2010-06-16 21:06:23", 
+            "change_type": 7, 
+            "title": "Will Attend", 
+            "snip": 1, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "(none so far)", 
+            "edited": "2010-06-16 21:08:17", 
+            "change_type": 7, 
+            "title": "Will Probably Attend, But Not if I Sleep In on Saturday/Sunday ", 
+            "snip": 2, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "**10:00 AM** - Doors Open\r\n**11:00 AM** - Welcome to BARcamp Chicago (Kevin Harriss)\r\n**12:00 PM**\r\n**1:00 PM**\r\n**2;00 PM**\r\n**3:00 PM**\r\n**4:00 PM**\r\n**5:00 PM**\r\n**6:00 PM**\r\n**7:00 PM**\r\n**8:00 PM** - Drunken Panel Discussion (Panel members TBA)\r\n**9:00 PM** - Techy Movies (All night!)\r\n\r\n*(Feel free to add your own late night time blocks!)*", 
+            "edited": "2010-06-16 21:42:06", 
+            "change_type": 7, 
+            "title": "Saturday's Agenda", 
+            "snip": 3, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "**10:00 AM** - Doors Open\r\n\r\n**11:00 AM** - Welcome to BARcamp Chicago (Kevin Harriss)\r\n\r\n**12:00 PM**\r\n\r\n**1:00 PM**\r\n\r\n**2;00 PM**\r\n\r\n**3:00 PM**\r\n\r\n**4:00 PM**\r\n\r\n**5:00 PM**\r\n\r\n**6:00 PM**\r\n\r\n**7:00 PM**\r\n\r\n**8:00 PM** - Drunken Panel Discussion (Panel members TBA)\r\n\r\n**9:00 PM** - Techy Movies (All night!)\r\n\r\n*(Feel free to add your own late night time blocks!)*", 
+            "edited": "2010-06-16 21:42:26", 
+            "change_type": 0, 
+            "title": "Saturday's Agenda", 
+            "snip": 3, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "*(Feel free to add your own early morning time blocks!)*\r\n\r\n**9:00 AM**\r\n\r\n**10:00 AM**\r\n\r\n**11:00 AM**\r\n\r\n**12:00 PM**\r\n\r\n**1:00 PM**\r\n\r\n**2:00 PM**\r\n\r\n**3:00 PM**\r\n\r\n**4:00 PM**\r\n\r\n**5:00 PM** - BARcamp Chicago 2010 Wrap-up Talk (Kevin Harriss) ", 
+            "edited": "2010-06-16 21:43:57", 
+            "change_type": 7, 
+            "title": "Sunday's Agenda", 
+            "snip": 4, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "BARcompany", 
+            "edited": "2010-06-16 21:44:21", 
+            "change_type": 7, 
+            "title": "All Day Events", 
+            "snip": 5, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "sphwiki.wikisnipchange", 
+        "fields": {
+            "body": "Here's the Wiki. Feel free to create any page by changing the name of the wiki page in the url from \"Start\" to your desired name. This will serve for any general BARcamp ad-hoc planning, and also for a workspace for any projects you wish to coordinate.\r\n\r\nAlso note that certain special wiki pages, such as signup lists, are embedded elsewhere in the site.", 
+            "edited": "2010-06-16 21:49:28", 
+            "change_type": 7, 
+            "title": "", 
+            "snip": 6, 
+            "editor": 2, 
+            "message": ""
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "community.group", 
+        "fields": {
+            "default_theme": null, 
+            "baseurl": "www.example.com", 
+            "name": "example", 
+            "parent": null, 
+            "longname": "Example Group"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "community.group", 
+        "fields": {
+            "default_theme": null, 
+            "baseurl": "barcampchicago.com", 
+            "name": "Barcamp", 
+            "parent": null, 
+            "longname": "Barcamp"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "community.navigation", 
+        "fields": {
+            "urltype": 0, 
+            "navigationType": 0, 
+            "label": "Home", 
+            "href": "/wiki/show/Start/", 
+            "sortorder": 10, 
+            "group": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "community.navigation", 
+        "fields": {
+            "urltype": 0, 
+            "navigationType": 0, 
+            "label": "Board", 
+            "href": "/board/show/0/", 
+            "sortorder": 20, 
+            "group": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "community.applicationchangelog", 
+        "fields": {
+            "applied": "2010-06-15 21:55:39", 
+            "model": "wikisnip", 
+            "version": "2007-04-08 01", 
+            "app_label": "sphwiki"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "community.applicationchangelog", 
+        "fields": {
+            "applied": "2010-06-15 21:55:39", 
+            "model": "wikisnipchange", 
+            "version": "2008-03-23 05", 
+            "app_label": "sphwiki"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "community.applicationchangelog", 
+        "fields": {
+            "applied": "2010-06-15 21:55:41", 
+            "model": "groupmember", 
+            "version": "2008-04-06 02", 
+            "app_label": "community"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "community.applicationchangelog", 
+        "fields": {
+            "applied": "2010-06-15 21:55:41", 
+            "model": "communityuserprofile", 
+            "version": "2008-04-10 02", 
+            "app_label": "community"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "community.applicationchangelog", 
+        "fields": {
+            "applied": "2010-06-15 21:55:41", 
+            "model": "rolemember", 
+            "version": "2008-04-15 01", 
+            "app_label": "community"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "community.communityuserprofilefield", 
+        "fields": {
+            "help_text": "", 
+            "regex": "\\d+", 
+            "sortorder": 100, 
+            "name": "ICQ UIN", 
+            "renderstring": ""
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "community.communityuserprofilefield", 
+        "fields": {
+            "help_text": "", 
+            "regex": ".+@.+", 
+            "sortorder": 200, 
+            "name": "Jabber Id", 
+            "renderstring": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "community.communityuserprofilefield", 
+        "fields": {
+            "help_text": "", 
+            "regex": "http://.*", 
+            "sortorder": 300, 
+            "name": "Website URL", 
+            "renderstring": "<a href=\"%(value)s\">%(value)s</a>"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "community.permissionflag", 
+        "fields": {
+            "name": "group_administrator"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "community.permissionflag", 
+        "fields": {
+            "name": "community_manage_roles"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "community.role", 
+        "fields": {
+            "permission_flags": [
+                1
+            ], 
+            "group": 1, 
+            "name": "Group Admin"
+        }
+    }, 
+    {
+        "pk": 1, 
         "model": "auth.user", 
         "fields": {
             "username": "tsaylor", 
@@ -9,12 +745,30 @@
             "is_active": true, 
             "is_superuser": true, 
             "is_staff": true, 
-            "last_login": "2010-05-16 21:53:34", 
+            "last_login": "2010-06-20 20:57:45", 
             "groups": [], 
             "user_permissions": [], 
             "password": "sha1$6793b$5843adc349c21bf76eb24917e603d5c97b49997d", 
             "email": "tim.saylor@gmail.com", 
             "date_joined": "2010-05-16 21:53:18"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "orblivion", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2010-06-16 20:50:23", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$dc337$909c4b27e6eff1dacb278f2e26c1cb0d462ff696", 
+            "email": "a@b.com", 
+            "date_joined": "2010-06-15 21:56:07"
         }
     }
 ]

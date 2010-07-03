@@ -1,0 +1,29 @@
+body {
+    background-color: #666666;
+}
+
+.container {
+    background-color: #ffffff;
+    padding-left: 5px;
+    min-height: 509px
+}
+
+.navbar {
+    padding-left: 25px;
+}
+
+.main-content {
+    padding-top: 10px;
+}
+
+.horiz-rule {
+    border-bottom: 1px solid #9a9a9a;
+}
+
+.news-title {
+    font-size: 1.5em;
+}
+
+.date {
+    font-size: .75em;
+}
