@@ -77,7 +77,7 @@ TEMPLATE_DIRS = ( "/home/eviljoel/Desktop/BARcamp Chicago 2010/premiumWebsite/we
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+    #os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
