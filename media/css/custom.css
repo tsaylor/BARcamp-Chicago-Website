@@ -2,6 +2,10 @@ body {
     background-color: #666666;
 }
 
+.editsection {
+    display: none;
+}
+
 h1 {
     font-size: 2.5em;
     font-weight: bold;
@@ -14,7 +18,7 @@ h1 {
 }
 
 .navbar {
-    padding-left: 25px;
+    /*padding-left: 25px;*/
 }
 
 .main-content {

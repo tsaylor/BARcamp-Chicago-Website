@@ -16,7 +16,18 @@
         <div class="span-24 last">
             <a href='/'><img src='/media/siteimages/logo-header.jpg'/></a>
         </div>
-        <div class="span-19 main-content">
+        <div class="span-5">
+            <div class="navbar">
+                {% if feincms_page %}
+                    {% block sidebar_content %}
+                    {% feincms_render_region feincms_page "sidebar" request %}
+                    {% endblock %}
+                {% else %}
+                    {{ wiki_sidebar_html|safe }}
+                {% endif %}
+            </div>
+        </div>  
+        <div class="span-19 main-content last">
             {% if feincms_page %} {% comment %} If this is a feincms view vs a wiki view {% endcomment %}
 
                 {% block main_content %}
@@ -32,17 +43,6 @@
 
             {% endif %}
         </div>
-        <div class="span-5 last" style="text-align: right;">
-            <div class="navbar">
-                {% if feincms_page %}
-                    {% block sidebar_content %}
-                    {% feincms_render_region feincms_page "sidebar" request %}
-                    {% endblock %}
-                {% else %}
-                    {{ wiki_sidebar_html|safe }}
-                {% endif %}
-            </div>
-        </div>  
     </div>
 </body>
 </html>
