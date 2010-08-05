@@ -36,3 +36,7 @@ h1 {
 .date {
     font-size: .75em;
 }
+
+.news {
+    width: 60%;
+}
