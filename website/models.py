@@ -48,6 +48,7 @@ LINKS_CHOICES = (
     ('A', 'agenda'),
     ('P', 'helpout'),
     ('C', 'community'),
+    ('S', 'sponsors'),
     )
 
 def rendersidebar(page):
