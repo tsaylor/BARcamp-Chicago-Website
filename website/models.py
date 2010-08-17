@@ -44,7 +44,7 @@ LINKS_CHOICES = (
     ('W', 'wiki'),
     ('T', 'what'),
     ('O', 'who'),
-    ('E', 'where'),
+    ('E', 'logistics'),
     ('A', 'agenda'),
     ('P', 'helpout'),
     ('C', 'community'),
